@@ -25,6 +25,8 @@ const FeedInput = (props: IProps) => {
         inputAccessoryViewID="done"
         value={props.title}
         onChange={props.onChangeTitle}
+        autoCapitalize="none"
+
       />
 
       <Text style={styles.text}>내용</Text>
@@ -36,6 +38,8 @@ const FeedInput = (props: IProps) => {
         inputAccessoryViewID="done"
         value={props.detail}
         onChange={props.onChangeDetail}
+        autoCapitalize="none"
+
       />
     </View>
   );

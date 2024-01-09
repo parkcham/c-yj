@@ -6,9 +6,9 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import BottomNavigator from "./BottomNavigator";
-import DDayUpload from "../Screens/DDayUpload";
-import FeedUpload from "../Screens/FeedUpload";
-import DiaryUpload from "../Screens/DiaryUpload";
+import DDayUpload from "../pages/DDay/DDayUpload";
+import FeedUpload from "../pages/Feed/FeedUpload";
+import DiaryUpload from "../pages/Diary/DiaryUpload";
 import { RootStackParamList } from "./types";
 
 const Stack = createStackNavigator<RootStackParamList>();

@@ -2,43 +2,43 @@ import React from "react";
 import { StyleSheet, Platform } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import useForm from "../hooks/useForm";
-import useHeader from "../hooks/useHeader";
-import useImagePicker from "../hooks/useImagePicker";
-import FeedInput from "../pages/Feed/FeedInput";
-import FeedImageList from "../pages/Feed/FeedImageList";
-import InputDone from "../components/InputDone";
+import useForm from "../../hooks/useForm";
+import useHeader from "../../hooks/useHeader";
+import DiaryInput from "./DiaryInput";
+import InputDone from "../../components/InputDone";
+import { createContent, createdAt } from "../../apis/api/commonFirebase";
 
-const FeedUpload = () => {
+const DiaryUpload = () => {
   const { title, detail, onChange } = useForm();
-  const { images, imagePickerLimit, removeImage } = useImagePicker();
 
-  const tlqkf = () => {
-    console.log("zz");
-  };
-
-  useHeader({ disabled: title.length, onPress: tlqkf });
+  useHeader({
+    disabled: title.length + detail.length,
+    onPress: () =>
+      createContent({
+        collection: "Diarys",
+        title: title,
+        detail: detail,
+        createdAt: createdAt,
+      }),
+  });
 
   return (
     <>
       <KeyboardAwareScrollView
+        style={styles.container}
         keyboardOpeningTime={0}
         extraScrollHeight={50}
         extraHeight={120}
-        style={styles.container}
+        bounces={false}
       >
-        <FeedImageList
-          images={images}
-          onPressImagePicker={imagePickerLimit}
-          onPressRemoveImage={removeImage}
-        />
-        <FeedInput
+        <DiaryInput
           title={title}
           detail={detail}
           onChangeTitle={(e) => onChange("title", e)}
           onChangeDetail={(e) => onChange("detail", e)}
         />
       </KeyboardAwareScrollView>
+
       {Platform.OS === "ios" ? <InputDone /> : null}
     </>
   );
@@ -47,8 +47,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
+    paddingLeft: 14,
     paddingTop: 10,
+    paddingRight: 20,
   },
 });
 
-export default FeedUpload;
+export default DiaryUpload;

@@ -12,7 +12,7 @@ import { ko } from "date-fns/locale";
 interface IProps {
   isDatePickerVisible: boolean;
   mode: "date" | "time" | "datetime";
-  date: Date;
+  selectedDate: Date;
   text: string;
   onConfirm: (date: Date) => void;
   onCancel: () => void;
@@ -29,8 +29,8 @@ const DateTimePicker = (props: IProps) => {
       >
         <Text style={styles.leftText}>{props.text}</Text>
         <Text style={styles.dateText}>
-          {format(props.date, "yyyy.MM.dd")}(
-          {format(props.date, "EE", { locale: ko })})
+          {format(props.selectedDate, "yyyy.MM.dd")}(
+          {format(props.selectedDate, "EE", { locale: ko })})
         </Text>
       </TouchableOpacity>
 
@@ -38,6 +38,7 @@ const DateTimePicker = (props: IProps) => {
         style={styles.DateTimePickerModal}
         isVisible={props.isDatePickerVisible}
         mode={props.mode}
+        date={props.selectedDate}
         display="inline"
         onConfirm={props.onConfirm}
         onCancel={props.onCancel}

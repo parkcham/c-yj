@@ -10,12 +10,14 @@ import { Feather } from "@expo/vector-icons";
 interface IProps {
   disabled: number;
   onPress: (event: GestureResponderEvent) => void;
+  deps?:any
 }
 
 const useHeader = (props: IProps) => {
   const navigation = useNavigation();
 
   useEffect(() => {
+    console.log("tlqkf")
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
@@ -25,17 +27,19 @@ const useHeader = (props: IProps) => {
         >
           <Feather
             name="send"
-            size={20}
+            size={22}
+            style={{transform: [{ rotate: '20deg'}]}}
             color={props.disabled > 0 ? "#8A8A8A" : "#E6E6E6"}
           />
         </TouchableOpacity>
       ),
     });
-  }, [navigation, props.disabled]);
+  }, [navigation, props.disabled,props.deps]);
 };
 const styles = StyleSheet.create({
   right: {
     paddingRight: 14,
+    
   },
 });
 

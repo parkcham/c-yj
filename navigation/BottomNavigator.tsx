@@ -7,11 +7,11 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
-import Home from "../Screens/Home";
-import DDay from "../Screens/DDay";
-import Feed from "../Screens/Feed";
-import Diary from "../Screens/Diary";
-import Calendar from "../Screens/Calendar";
+import Home from "../pages/Home/Home";
+import DDay from "../pages/DDay/DDay";
+import Feed from "../pages/Feed/Feed";
+import Diary from "../pages/Diary/Diary";
+import Calendar from "../pages/Calendar/Calendar";
 
 const Tab = createBottomTabNavigator();
 

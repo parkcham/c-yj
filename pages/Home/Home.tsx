@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text , StatusBar } from "react-native";
 
-import UploadButton from "../pages/Home/UploadButton";
+import UploadButton from "./UploadButton";
 
 const Home = () => {
   return (

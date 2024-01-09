@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { todayMidnight, timeFormat } from "../apis/utils/dayCounter";
 
 export default function useDateTimePicker() {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(todayMidnight);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -14,9 +15,9 @@ export default function useDateTimePicker() {
 
   const handleConfirm = (date: Date) => {
     hideDatePicker();
-    setSelectedDate(date);
+    setSelectedDate(timeFormat(date, "00:00:00"));
   };
-  
+
   return {
     isDatePickerVisible,
     selectedDate,

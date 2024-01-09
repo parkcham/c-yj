@@ -2,13 +2,16 @@ import React from "react";
 import { StyleSheet, Platform } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import useForm from "../hooks/useForm";
-import useHeader from "../hooks/useHeader";
-import DiaryInput from "../pages/Diary/DiaryInput";
-import InputDone from "../components/InputDone";
+import useForm from "../../hooks/useForm";
+import useHeader from "../../hooks/useHeader";
+import useImagePicker from "../../hooks/useImagePicker";
+import FeedInput from "./FeedInput";
+import FeedImageList from "./FeedImageList";
+import InputDone from "../../components/InputDone";
 
-const DiaryUpload = () => {
+const FeedUpload = () => {
   const { title, detail, onChange } = useForm();
+  const { images, imagePickerLimit, removeImage } = useImagePicker();
 
   const tlqkf = () => {
     console.log("zz");
@@ -19,13 +22,17 @@ const DiaryUpload = () => {
   return (
     <>
       <KeyboardAwareScrollView
-        style={styles.container}
         keyboardOpeningTime={0}
         extraScrollHeight={50}
         extraHeight={120}
-        bounces={false}
+        style={styles.container}
       >
-        <DiaryInput
+        <FeedImageList
+          images={images}
+          onPressImagePicker={imagePickerLimit}
+          onPressRemoveImage={removeImage}
+        />
+        <FeedInput
           title={title}
           detail={detail}
           onChangeTitle={(e) => onChange("title", e)}
@@ -40,10 +47,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    paddingLeft: 14,
     paddingTop: 10,
-    paddingRight: 20,
   },
 });
 
-export default DiaryUpload;
+export default FeedUpload;

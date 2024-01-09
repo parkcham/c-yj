@@ -26,9 +26,9 @@ const FeedImageList = (props: IProps) => {
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={props.onPressImagePicker}
-      style={[styles.header, { width: width / 4.2 }]}
+      style={[styles.header, { width: width / 4.5 }]}
     >
-      <EvilIcons name="camera" size={50} color="pink" />
+      <EvilIcons name="camera" size={46} color="pink" />
 
       <View style={styles.textView}>
         <Text style={styles.imagesLength}>{props.images.length}</Text>
@@ -41,7 +41,7 @@ const FeedImageList = (props: IProps) => {
   const renderItem = ({ item }: any) => (
     <ImageBackground
       source={{ uri: item }}
-      style={[styles.renderItem, { width: width / 4.2 }]}
+      style={[styles.renderItem, { width: width / 4.5 }]}
       imageStyle={styles.renderItemImage}
     >
       <RemoveButton size={14} onPress={() => props.onPressRemoveImage(item)} />
@@ -63,7 +63,12 @@ const FeedImageList = (props: IProps) => {
 };
 const styles = StyleSheet.create({
   container: {
-    height: 100,
+    height: 130,
+    borderTopWidth:1.2,
+    borderBottomWidth: 1.2,
+    borderColor: "#F2F2F2",
+    paddingTop:20,
+    paddingBottom:20
   },
   header: {
     height: "100%",
@@ -72,6 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F5F5",
     alignItems: "center",
     justifyContent: "center",
+    
   },
   textView: {
     flexDirection: "row",

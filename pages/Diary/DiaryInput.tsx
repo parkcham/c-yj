@@ -22,6 +22,9 @@ const DiaryInput = (props: IProps) => {
         placeholder="제목"
         inputAccessoryViewID="done"
         value={props.title}
+        autoCapitalize="none"
+        selectionColor={"pink"}
+
         onChange={props.onChangeTitle}
       />
       <TextInput
@@ -32,6 +35,10 @@ const DiaryInput = (props: IProps) => {
         onChange={props.onChangeDetail}
         multiline
         scrollEnabled={false}
+        selectionColor={"pink"}
+
+        autoCapitalize="none"
+
       />
     </View>
   );
