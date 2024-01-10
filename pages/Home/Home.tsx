@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text , StatusBar } from "react-native";
+import { View, StyleSheet, Text, StatusBar, Button } from "react-native";
 
 import UploadButton from "./UploadButton";
 
@@ -7,9 +7,12 @@ const Home = () => {
   return (
     <View style={styles.contanier}>
       <Text style={{ marginTop: 200 }}>zz</Text>
+      <Button
+        onPress={() => console.log(process.env.REACT_APP_PROJECT_ID)}
+        title="tlqkf"
+      ></Button>
       <UploadButton />
       <StatusBar barStyle={"dark-content"} />
-
     </View>
   );
 };
