@@ -60,6 +60,7 @@ const StackNavigator = () => {
         <Stack.Screen
           options={{
             headerTitle: "새 피드",
+
           }}
           name="FeedUpload"
           component={FeedUpload}

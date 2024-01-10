@@ -4,8 +4,8 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 
 import useForm from "../../hooks/useForm";
 import useHeader from "../../hooks/useHeader";
-import DiaryInput from "./DiaryInput";
-import InputDone from "../../components/InputDone";
+import DiaryInput from "../../components/Diary/DiaryInput";
+import InputDone from "../../components/Common/InputDone";
 import { createContent, createdAt } from "../../apis/api/commonFirebase";
 
 const DiaryUpload = () => {

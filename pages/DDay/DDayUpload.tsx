@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { View, StyleSheet, Platform } from "react-native";
 
 import useDateTimePicker from "../../hooks/useDateTimePicker";
-import DateTimePicker from "../../components/DateTimePicker";
-import Input from "../../components/Input";
-import InputDone from "../../components/InputDone";
-import DayCounter from "./DayCounter";
+import DateTimePicker from "../../components/Common/DateTimePicker";
+import Input from "../../components/Common/Input";
+import InputDone from "../../components/Common/InputDone";
+import DayCounter from "../../components/DDay/DayCounter";
 import useHeader from "../../hooks/useHeader";
 import { createContent, createdAt } from "../../apis/api/commonFirebase";
 import { conditional, day } from "../../apis/utils/dayCounter";

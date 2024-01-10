@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 
-import RemoveButton from "../../components/RemoveButton";
+import RemoveButton from "../Common/RemoveButton";
 
 interface IProps {
   images: string;

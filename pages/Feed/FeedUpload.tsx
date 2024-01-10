@@ -3,9 +3,9 @@ import { StyleSheet, Platform, View } from "react-native";
 
 import useHeader from "../../hooks/useHeader";
 import useImagePicker from "../../hooks/useImagePicker";
-import FeedImageList from "./FeedImageList";
-import InputDone from "../../components/InputDone";
-import Input from "../../components/Input";
+import FeedImageList from "../../components/Feed/FeedImageList";
+import InputDone from "../../components/Common/InputDone";
+import Input from "../../components/Common/Input";
 import {
   createContent,
   createdAt,
@@ -56,8 +56,10 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   input: {
-    height: 200,
+    height: 220,
     padding: 10,
+    borderTopWidth:1.2,
+    borderColor:"#F2F2F2"
   },
 });
 
