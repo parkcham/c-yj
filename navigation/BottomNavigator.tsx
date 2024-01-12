@@ -11,7 +11,7 @@ import Home from "../pages/Home/Home";
 import DDay from "../pages/DDay/DDay";
 import Feed from "../pages/Feed/Feed";
 import Diary from "../pages/Diary/Diary";
-import Calendar from "../pages/Calendar/Calendar";
+import CalendarScreen from "../pages/Calendar/CalendarScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -63,8 +63,8 @@ const BottomNavigator = () => {
             <FontAwesome name="calendar" size={24} color={color} />
           ),
         }}
-        name="Calendar"
-        component={Calendar}
+        name="CalendarScreen"
+        component={CalendarScreen}
       />
       <Tab.Screen
         options={{
