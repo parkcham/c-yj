@@ -20,7 +20,7 @@ interface IProps {
   showPicker: (event: GestureResponderEvent) => void;
 }
 
-const DateTimePicker = (props: IProps) => {
+const DateTimeModal = (props: IProps) => {
   return (
     <>
       <TouchableOpacity
@@ -77,4 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DateTimePicker;
+export default DateTimeModal;

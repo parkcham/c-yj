@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Platform } from "react-native";
 
 import useDateTimePicker from "../../hooks/useDateTimePicker";
-import DateTimePicker from "../../components/Common/DateTimePicker";
+import DateTimeModal from "../../components/Common/DateTimeModal";
 import Input from "../../components/Common/Input";
 import InputDone from "../../components/Common/InputDone";
 import DayCounter from "../../components/DDay/DayCounter";
@@ -40,7 +40,7 @@ const DDayUpload = () => {
 
         <Input style={styles.input} value={detail} onChangeText={setDetail} />
 
-        <DateTimePicker
+        <DateTimeModal
           text="날짜"
           isDatePickerVisible={isDatePickerVisible}
           selectedDate={selectedDate}
