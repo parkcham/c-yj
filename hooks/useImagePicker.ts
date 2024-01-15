@@ -5,6 +5,7 @@ import * as ImagePicker from "expo-image-picker";
 export default function useImagePicker() {
   const [images, setImages] = useState([] as any);
 
+  //Ignore permission
   const imagePicker = async () => {
     const { assets: result } = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,

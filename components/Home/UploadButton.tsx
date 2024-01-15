@@ -16,13 +16,12 @@ const UploadButton = () => {
 
   return (
     <PaperProvider>
-       <Portal>
+      <Portal>
         <FAB.Group
           open={open}
           visible
           icon={open ? "close" : "plus"}
           color="white"
-        
           backdropColor="transparent"
           fabStyle={styles.fab}
           actions={[
@@ -47,8 +46,8 @@ const UploadButton = () => {
           ]}
           onStateChange={onStateChange}
         />
-    </Portal>
-      </PaperProvider>
+      </Portal>
+    </PaperProvider>
   );
 };
 const styles = StyleSheet.create({

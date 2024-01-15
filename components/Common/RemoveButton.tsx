@@ -7,7 +7,7 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 
 interface IProps {
-  size: number;
+  size?: number;
   onPress: (event: GestureResponderEvent) => void;
 }
 

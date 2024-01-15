@@ -14,7 +14,6 @@ import Diary from "../pages/Diary/Diary";
 import CalendarScreen from "../pages/Calendar/CalendarScreen";
 
 const Tab = createBottomTabNavigator();
-
 const BottomNavigator = () => {
   return (
     <Tab.Navigator

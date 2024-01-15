@@ -21,6 +21,7 @@ const Input = (props: IProps) => {
       <TextInput
         style={styles.input}
         placeholder={props.placeholder}
+        placeholderTextColor="#D9D9D9"
         inputAccessoryViewID="done"
         value={props.value}
         autoCapitalize="none"
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
     color: "#545454",
     fontSize: 20,
     textAlignVertical: "top",
+    
   },
 });
 

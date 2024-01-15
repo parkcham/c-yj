@@ -11,9 +11,10 @@ import { ko } from "date-fns/locale";
 
 interface IProps {
   isDatePickerVisible: boolean;
-  mode: "date" | "time" | "datetime";
+  mode: "date" | "time" ;
   selectedDate: Date;
   text: string;
+  display?: "inline" | "spinner";
   onConfirm: (date: Date) => void;
   onCancel: () => void;
   showPicker: (event: GestureResponderEvent) => void;
@@ -28,10 +29,10 @@ const DateTimePicker = (props: IProps) => {
         style={styles.container}
       >
         <Text style={styles.leftText}>{props.text}</Text>
-        <Text style={styles.dateText}>
+        {props.mode === "date" ?<Text style={styles.dateText}>
           {format(props.selectedDate, "yyyy.MM.dd")}(
           {format(props.selectedDate, "EE", { locale: ko })})
-        </Text>
+        </Text> : <Text style={styles.dateText}>{format(new Date(props.selectedDate),"a h:mm",{locale:ko})}</Text>}
       </TouchableOpacity>
 
       <DateTimePickerModal
@@ -39,7 +40,7 @@ const DateTimePicker = (props: IProps) => {
         isVisible={props.isDatePickerVisible}
         mode={props.mode}
         date={props.selectedDate}
-        display="inline"
+        display={props.display}
         onConfirm={props.onConfirm}
         onCancel={props.onCancel}
         themeVariant={"light"}
@@ -54,8 +55,8 @@ const DateTimePicker = (props: IProps) => {
 };
 const styles = StyleSheet.create({
   container: {
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
+    borderBottomWidth: 1.2,
+    borderTopWidth: 1.2,
     borderColor: "#F2F2F2",
     paddingTop: 20,
     paddingBottom: 20,

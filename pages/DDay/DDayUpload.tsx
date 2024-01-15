@@ -8,7 +8,7 @@ import InputDone from "../../components/Common/InputDone";
 import DayCounter from "../../components/DDay/DayCounter";
 import useHeader from "../../hooks/useHeader";
 import { createContent, createdAt } from "../../apis/api/commonFirebase";
-import { conditional, day } from "../../apis/utils/dayCounter";
+import { conditional, day ,timeFormat} from "../../apis/utils/dayCounter";
 
 const DDayUpload = () => {
   const [detail, setDetail] = useState("");
@@ -19,6 +19,7 @@ const DDayUpload = () => {
     handleConfirm,
     hideDatePicker,
   } = useDateTimePicker();
+  const selectedDateMidnight = timeFormat(selectedDate, "00:00:00")
 
   useHeader({
     disabled: detail.length,
@@ -27,15 +28,15 @@ const DDayUpload = () => {
       createContent({
         collection: "DDays",
         detail: detail,
-        selectedDate: selectedDate,
-        conditional: conditional(day(selectedDate)),
+        selectedDate: selectedDateMidnight,
+        conditional: conditional(day(selectedDateMidnight)),
         createdAt: createdAt,
       }),
   });
   return (
     <>
       <View style={styles.container}>
-        <DayCounter day={day(selectedDate)} />
+        <DayCounter day={day(selectedDateMidnight)} />
 
         <Input style={styles.input} value={detail} onChangeText={setDetail} />
 
@@ -44,6 +45,7 @@ const DDayUpload = () => {
           isDatePickerVisible={isDatePickerVisible}
           selectedDate={selectedDate}
           mode="date"
+          display="inline"
           onCancel={hideDatePicker}
           onConfirm={handleConfirm}
           showPicker={showDatePicker}

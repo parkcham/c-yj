@@ -9,6 +9,7 @@ import BottomNavigator from "./BottomNavigator";
 import DDayUpload from "../pages/DDay/DDayUpload";
 import FeedUpload from "../pages/Feed/FeedUpload";
 import DiaryUpload from "../pages/Diary/DiaryUpload";
+import CalendarUpload from "../pages/Calendar/CalendarUpload";
 import { RootStackParamList } from "./types";
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -60,7 +61,6 @@ const StackNavigator = () => {
         <Stack.Screen
           options={{
             headerTitle: "새 피드",
-
           }}
           name="FeedUpload"
           component={FeedUpload}
@@ -72,6 +72,29 @@ const StackNavigator = () => {
           name="DiaryUpload"
           component={DiaryUpload}
         />
+      </Stack.Group>
+      <Stack.Group
+        screenOptions={{
+          headerShadowVisible: false,
+          // gestureEnabled:false,
+          
+          headerBackImage: () => (
+            <Ionicons
+              style={{ padding: 5 }}
+              name="arrow-back"
+              size={26}
+              color="#8A8A8A"
+            />
+          ),
+          headerBackTitleVisible: false,
+          presentation: "modal",
+          headerTintColor: "#8A8A8A",
+          headerTitleStyle: {
+            fontSize: 18,
+          },
+        }}
+      >
+        <Stack.Screen name="CalendarUpload" component={CalendarUpload} />
       </Stack.Group>
     </Stack.Navigator>
   );

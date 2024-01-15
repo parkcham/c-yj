@@ -63,18 +63,23 @@ const FeedImageList = (props: IProps) => {
 };
 const styles = StyleSheet.create({
   container: {
-    height: 130,
-    borderTopWidth:1.2,
-    borderBottomWidth: 1.2,
-    borderColor: "#F2F2F2",
+    // height: 130,
+    borderBottomWidth:4,
+    borderColor:"#F5F5F5",
+
+    // borderTopWidth:1.2,
+    // borderBottomWidth: 1.2,
+    // borderColor: "#F2F2F2",
     paddingTop:20,
     paddingBottom:20
   },
   header: {
-    height: "100%",
+    height: 88,
     marginLeft: 10,
-    borderRadius: 10,
+    borderRadius: 8,
     backgroundColor: "#F5F5F5",
+    // borderWidth:1.2,
+    // borderColor:"#E6E6E6",
     alignItems: "center",
     justifyContent: "center",
     
@@ -89,12 +94,12 @@ const styles = StyleSheet.create({
     color: "#8A8A8A",
   },
   renderItem: {
-    height: "100%",
+    height: 88,
     marginLeft: 5,
     marginRight: 3,
   },
   renderItemImage: {
-    borderRadius: 10,
+    borderRadius: 8,
   },
 });
 

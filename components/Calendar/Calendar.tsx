@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { CalendarList, LocaleConfig } from "react-native-calendars";
+import { MarkedDates, DateData } from "react-native-calendars/src/types";
 
 LocaleConfig.locales["fr"] = {
   monthNames: [
@@ -44,7 +45,12 @@ LocaleConfig.locales["fr"] = {
 };
 LocaleConfig.defaultLocale = "fr";
 
-const Calendar = () => {
+interface IProps {
+  markedDates?: MarkedDates | undefined;
+  onDayPress: (date: DateData) => void;
+}
+
+const Calendar = (props: IProps) => {
   return (
     <CalendarList
       style={styles.calendar}
@@ -53,8 +59,11 @@ const Calendar = () => {
       pastScrollRange={1}
       futureScrollRange={6}
       monthFormat="yyyy년 M월"
-      headerStyle={{}}
-      hideArrows={false}
+      // headerStyle={{}}
+      hideArrows={true}
+      staticHeader={true}
+      markedDates={props.markedDates}
+      onDayPress={props.onDayPress}
       theme={{
         "stylesheet.calendar.header": {
           dayTextAtIndex0: {
@@ -65,12 +74,14 @@ const Calendar = () => {
           },
         },
         arrowColor: "pink",
-        monthTextColor: "#545454",
+        monthTextColor: "#8A8A8A",
         textMonthFontSize: 20,
         todayBackgroundColor: "#5CD1E5",
         todayTextColor: "white",
+        textDayFontWeight: "bold",
+        textMonthFontWeight: "bold",
         textDayStyle: {
-          color: "#545454",
+          color: "#8A8A8A",
         },
       }}
     />
@@ -79,7 +90,6 @@ const Calendar = () => {
 const styles = StyleSheet.create({
   calendar: {
     height: 350,
-    borderWidth: 1,
   },
 });
 

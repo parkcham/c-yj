@@ -19,3 +19,7 @@ export function day(date: Date) {
 export function timeFormat(date: Date, time: string) {
   return new Date(`${format(date, "yyyy-MM-dd")} ${time}`);
 }
+
+// export function dateFormat( formatDate: string,date?: Date) {
+//   return format(new Date(date), formatDate);
+// }
