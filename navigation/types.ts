@@ -5,7 +5,9 @@ export type RootStackParamList = {
   DDayUpload: undefined;
   FeedUpload: undefined;
   DiaryUpload: undefined;
-  CalendarUpload: undefined;
+  CalendarUpload: {
+    selectedDate:string
+  };
 };
 
-export type ScreenNavigationProp = StackNavigationProp<RootStackParamList>;
+export type ScreenNavigationProp = StackNavigationProp<RootStackParamList,"CalendarUpload">;

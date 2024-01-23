@@ -16,8 +16,8 @@ const CalendarCard = (props:IProps) => {
       style={{
         borderBottomWidth: 1,
         borderColor: "#F2F2F2",
-        marginLeft: 10,
-        marginRight: 10,
+        marginLeft: 14,
+        marginRight: 14,
         marginBottom:10,
       }}
     >

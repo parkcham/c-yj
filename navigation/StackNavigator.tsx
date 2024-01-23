@@ -11,7 +11,6 @@ import FeedUpload from "../pages/Feed/FeedUpload";
 import DiaryUpload from "../pages/Diary/DiaryUpload";
 import CalendarUpload from "../pages/Calendar/CalendarUpload";
 import { RootStackParamList } from "./types";
-
 const Stack = createStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => {
@@ -77,7 +76,7 @@ const StackNavigator = () => {
         screenOptions={{
           headerShadowVisible: false,
           // gestureEnabled:false,
-          
+
           headerBackImage: () => (
             <Ionicons
               style={{ padding: 5 }}

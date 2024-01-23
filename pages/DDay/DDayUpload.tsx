@@ -14,16 +14,16 @@ const DDayUpload = () => {
   const [detail, setDetail] = useState("");
   const {
     isDatePickerVisible,
-    selectedDate,
+    selectedDateTime,
     showDatePicker,
     handleConfirm,
     hideDatePicker,
   } = useDateTimePicker();
-  const selectedDateMidnight = timeFormat(selectedDate, "00:00:00")
+  const selectedDateMidnight = timeFormat(selectedDateTime, "00:00:00")
 
   useHeader({
     disabled: detail.length,
-    deps: selectedDate,
+    deps: selectedDateTime,
     onPress: () =>
       createContent({
         collection: "DDays",
@@ -43,7 +43,7 @@ const DDayUpload = () => {
         <DateTimeModal
           text="날짜"
           isDatePickerVisible={isDatePickerVisible}
-          selectedDate={selectedDate}
+          selectedDate={selectedDateTime}
           mode="date"
           display="inline"
           onCancel={hideDatePicker}

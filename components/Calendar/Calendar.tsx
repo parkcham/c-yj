@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import { CalendarList, LocaleConfig } from "react-native-calendars";
 import { MarkedDates, DateData } from "react-native-calendars/src/types";
 
@@ -48,24 +48,49 @@ LocaleConfig.defaultLocale = "fr";
 interface IProps {
   markedDates?: MarkedDates | undefined;
   onDayPress: (date: DateData) => void;
+  onMonthChange?: (date: DateData) => void
+  onVisibleMonthsChange?: (months: DateData[]) => void;
 }
 
 const Calendar = (props: IProps) => {
+  const {width} = useWindowDimensions()
   return (
     <CalendarList
       style={styles.calendar}
       horizontal={true}
       pagingEnabled={true}
-      pastScrollRange={1}
-      futureScrollRange={6}
+      pastScrollRange={0}
+      
+      // calendarStyle={{paddingLeft:0,paddingRight:0}}
+      // dayComponent={({date, state}) => {
+      //   return (
+      //     <View>
+      //       <Text style={{textAlign: 'center', color: state === 'disabled' ? 'gray' : 'black'}}>{date.day}</Text>
+      //     </View>
+      //   );
+      // }}
+      // disabledDaysIndexes={[0, 6]}
+      // firstDay={1}
+      // customHeader={}
+      futureScrollRange={12}
       monthFormat="yyyy년 M월"
       // headerStyle={{}}
       hideArrows={true}
       staticHeader={true}
+      // onMonthChange={month => {
+      //   console.log('month changed', month);
+      // }}
       markedDates={props.markedDates}
       onDayPress={props.onDayPress}
+      onVisibleMonthsChange={props.onVisibleMonthsChange}
+      onMonthChange={props.onMonthChange}
+      
       theme={{
         "stylesheet.calendar.header": {
+          header: {
+            height: 0,
+            opacity: 0
+          },
           dayTextAtIndex0: {
             color: "red",
           },
@@ -73,11 +98,10 @@ const Calendar = (props: IProps) => {
             color: "blue",
           },
         },
-        arrowColor: "pink",
+        // arrowColor: "pink",
         monthTextColor: "#8A8A8A",
         textMonthFontSize: 20,
-        todayBackgroundColor: "#5CD1E5",
-        todayTextColor: "white",
+        todayTextColor: "#5CD1E5",
         textDayFontWeight: "bold",
         textMonthFontWeight: "bold",
         textDayStyle: {
@@ -89,7 +113,7 @@ const Calendar = (props: IProps) => {
 };
 const styles = StyleSheet.create({
   calendar: {
-    height: 350,
+    height: 300,
   },
 });
 

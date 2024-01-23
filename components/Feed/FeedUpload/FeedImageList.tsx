@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 
-import RemoveButton from "../Common/RemoveButton";
+import RemoveButton from "../../Common/RemoveButton";
 
 interface IProps {
   images: string;
@@ -64,7 +64,7 @@ const FeedImageList = (props: IProps) => {
 const styles = StyleSheet.create({
   container: {
     // height: 130,
-    borderBottomWidth:4,
+    borderBottomWidth:8,
     borderColor:"#F5F5F5",
 
     // borderTopWidth:1.2,

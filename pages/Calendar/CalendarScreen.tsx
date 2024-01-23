@@ -7,6 +7,7 @@ import {
   FlatList,
   ListRenderItem,
   SectionList,
+  Animated,
 } from "react-native";
 import Calendar from "../../components/Calendar/Calendar";
 import FabButton from "../../components/Common/FabButton";
@@ -19,6 +20,9 @@ import { useNavigation } from "@react-navigation/native";
 import { ScreenNavigationProp } from "../../navigation/types";
 import { Modalize } from "react-native-modalize";
 import useDateTimePicker from "../../hooks/useDateTimePicker";
+import CalendarList from "../../components/Calendar/CalendarList";
+import CalendarHeader from "../../components/Calendar/CalendarHeader";
+import SectionHeader from "../../components/Calendar/SectionHeader";
 const CalendarScreen = () => {
   const data = [
     {
@@ -121,7 +125,6 @@ const CalendarScreen = () => {
     format(new Date(), "yyyy-MM-dd")
   );
 
-
   const markedDates = useMemo(
     () =>
       data.reduce(
@@ -152,76 +155,69 @@ const CalendarScreen = () => {
 
   const onDayPress = (day: any) => {
     setSelectedDate(day.dateString);
+    console.log(day);
     // daySchedule(day.dateString);
   };
-  const renderItem = ({ item, index }: any) => (
-    <CalendarCard detail={item.detail} time={item.time} />
-  );
   const filteredData = data.filter(
     (data) => format(new Date(data.date), "yyyy-MM-dd") === selectedDate
   );
 
-  const renderSectionHeader = () => (
-    <View
-      style={{
-        backgroundColor: "white",
-        padding: 10,
-        justifyContent: "space-between",
-        flexDirection: "row",
-        alignItems: "center",
-      }}
-    >
-      {selectedDate === format(new Date(), "yyyy-MM-dd") ? (
-        <Text style={{ fontSize: 20, color: "#5CD1E5" }}>Today</Text>
-      ) : (
-        <Text style={{ fontSize: 20, color: "pink" }}>
-          {format(new Date(selectedDate), "d")}일(
-          {format(new Date(selectedDate), "EE", { locale: ko })})
-        </Text>
-      )}
+  const [month, setMonth] = useState(format(new Date(), "yyyy-MM-dd"));
+  // return new Date(`${format(date, "yyyy-MM-dd")} ${time}`);
 
-      {filteredData.length > 0 ? (
-        <Text style={{ fontSize: 16, color: "#545454" }}>
-          일정:{filteredData.length}개
-        </Text>
-      ) : null}
-    </View>
-  );
+  // const onDayMonth = (months: any) => {
+  //   setMonth(months[0].dateString);
+  //   setSelectedDate(format(new Date(months[0].dateString), "yyyy-MM-01"));
 
-  const ListEmptyComponent = () => (
-    <View
-      style={{
-        alignItems: "center",
-        justifyContent: "center",
-        height: "80%",
-      }}
-    >
-      {filteredData.length === 0 ? (
-        <Text style={{ fontSize: 18, color: "#545454" }}>일정 없음 !</Text>
-      ) : null}
-    </View>
-  );
+  //   console.log(months[0].dateString);
+  //   // daySchedule(day.dateString);
+  // };
+  const onDayMonth = (months: any) => {
+    setMonth(months.dateString);
+    // setSelectedDate(format(new Date(months.dateString), "yyyy-MM-01"));
 
+    // console.log(months[0].dateString);
+    // daySchedule(day.dateString);
+  };
 
+  const onMonthChange = () => {
+    setSelectedDate(format(new Date(month), "yyyy-MM-01"));
+
+  }
+  const scrollY = useRef(new Animated.Value(0)).current;
+  const headerTitleColor = scrollY.interpolate({
+    inputRange: [330, 330],
+    outputRange: ["white", "pink"],
+    extrapolate: "clamp",
+  });
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-
-      <SectionList
-        contentContainerStyle={{ paddingBottom: 60 }}
-        showsVerticalScrollIndicator={false}
-        // keyExtractor?: ((item: ItemT, index: number) => string) | undefined;
-
-        keyExtractor={(item: any) => item.id}
-        ListHeaderComponent={
-          <Calendar markedDates={markedSelectedDate} onDayPress={onDayPress} />
-        }
-        renderItem={renderItem}
-        renderSectionHeader={renderSectionHeader}
-        sections={[{ data: filteredData }]}
-        stickySectionHeadersEnabled={true}
-        ListFooterComponent={ListEmptyComponent}
+      <CalendarHeader
+        color={headerTitleColor}
+        month={month}
+        selectedDate={selectedDate}
       />
-      <FabButton icon="pencil" onPress={()=>navigation.navigate("CalendarUpload")} />
+
+      <CalendarList
+        selectedDate={selectedDate}
+        data={filteredData}
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: { contentOffset: { y: scrollY } },
+            },
+          ],
+          { useNativeDriver: false }
+        )}
+        ListHeaderComponent={
+          <Calendar
+            markedDates={markedSelectedDate}
+            onDayPress={onDayPress}
+            onMonthChange={onDayMonth}
+            // onVisibleMonthsChange={onMonthChange}
+          />
+        }
+      />
     </SafeAreaView>
   );
 };

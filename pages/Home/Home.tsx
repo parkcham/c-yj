@@ -1,7 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Text, StatusBar, Button } from "react-native";
-
-import UploadButton from "../../components/Home/UploadButton";
+import {
+  View,
+  StyleSheet,
+  Text,
+  StatusBar,
+  Button,
+  Platform,
+} from "react-native";
 
 const Home = () => {
   return (
@@ -11,8 +16,9 @@ const Home = () => {
         onPress={() => console.log(process.env.REACT_APP_PROJECT_ID)}
         title="tlqkf"
       ></Button>
-      <UploadButton />
-      <StatusBar barStyle={"dark-content"} />
+      <StatusBar
+        barStyle={Platform.OS === "ios" ? "dark-content" : "default"}
+      />
     </View>
   );
 };

@@ -3,7 +3,7 @@ import { StyleSheet, Platform, View } from "react-native";
 
 import useHeader from "../../hooks/useHeader";
 import useImagePicker from "../../hooks/useImagePicker";
-import FeedImageList from "../../components/Feed/FeedImageList";
+import FeedImageList from "../../components/Feed/FeedUpload/FeedImageList";
 import InputDone from "../../components/Common/InputDone";
 import Input from "../../components/Common/Input";
 import {
