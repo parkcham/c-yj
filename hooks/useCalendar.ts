@@ -1,36 +1,32 @@
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { format } from "date-fns";
 
 interface IProps {
-  dates: any;
+  data: any;
 }
 export default function useCalendar(props: IProps) {
-
-  const [schedule, setSchedule] = useState([]);
   const [selectedDate, setSelectedDate] = useState(
     format(new Date(), "yyyy-MM-dd")
   );
 
-  const onDayPress = (day:any) => {
-    setSelectedDate(day.dateString);
-    daySchedule(day.dateString);
-  };
-
-  const markedDates = props.dates.reduce(
-    (
-      acc: { [x: string]: { marked: boolean; dotColor: string } },
-      current: { date: string | number | Date }
-    ) => {
-      const formattedDate = format(new Date(current.date), "yyyy-MM-dd");
-      acc[formattedDate] = {
-        marked: true,
-        dotColor: "red",
-      };
-      return acc;
-    },
-    {}
+  const markedDates = useMemo(
+    () =>
+      props.data.reduce(
+        (
+          acc: { [x: string]: { marked: boolean; dotColor: string } },
+          current: { date: string | number | Date }
+        ) => {
+          const formattedDate = format(new Date(current.date), "yyyy-MM-dd");
+          acc[formattedDate] = {
+            marked: true,
+            dotColor: "red",
+          };
+          return acc;
+        },
+        {}
+      ),
+    [props.data]
   );
-
   const markedSelectedDate = {
     ...markedDates,
     [selectedDate]: {
@@ -41,21 +37,25 @@ export default function useCalendar(props: IProps) {
     },
   };
 
-  const selectedSchedule = [];
-  const daySchedule = (day: () => string) => {
-    props.dates.forEach((d: { date: () => string }) => {
-      if (d.date === day) {
-        selectedSchedule.push(d);
-      }
-    });
+  const onDayPress = (day: any) => {
+    setSelectedDate(day.dateString);
+  };
+  const filteredData = props.data.filter(
+    (data: { date: string | number | Date }) =>
+      format(new Date(data.date), "yyyy-MM-dd") === selectedDate
+  );
+
+  const [month, setMonth] = useState(format(new Date(), "yyyy-MM-dd"));
+  const onDayMonth = (months: any) => {
+    setMonth(months.dateString);
   };
 
-  const sortedDates = (s: any) => {
-    let dates = s;
-    dates.sort((a: { strTime: any }, b: { strTime: any }) => {
-      return Number(a.strTime) - Number(b.strTime);
-    });
-    setSchedule(dates);
+  return {
+    month,
+    selectedDate,
+    filteredData,
+    markedSelectedDate,
+    onDayMonth,
+    onDayPress,
   };
-  return { selectedDate,markedSelectedDate,onDayPress };
 }

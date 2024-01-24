@@ -7,6 +7,7 @@ import {
   useWindowDimensions,
   ImageBackground,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
 
 interface IProps {
@@ -26,25 +27,12 @@ const FeedCardImageList = (props: IProps) => {
   const renderItem = ({ item, index }: any) => (
     <TouchableOpacity activeOpacity={1} onPress={handelResize}>
       <ImageBackground
-        style={{ height: 320, width: width, backgroundColor: "black" }}
-        // resizeMode='contain'
+        style={[styles.imageStyle, { width: width }]}
         resizeMode={resizeMode}
         source={{ uri: item }}
       >
-        <View style={{ alignItems: "flex-end", padding: 10 }}>
-          <Text
-            style={{
-              color: "pink",
-              fontSize: 12,
-              borderWidth: 1,
-              borderColor: "pink",
-              paddingBottom: 2,
-              paddingTop: 2,
-              paddingLeft: 5,
-              paddingRight: 5,
-              borderRadius: 8,
-            }}
-          >
+        <View style={styles.lengthView}>
+          <Text style={styles.lengthText}>
             {index + 1}/{props.images.length}
           </Text>
         </View>
@@ -61,5 +49,27 @@ const FeedCardImageList = (props: IProps) => {
     />
   );
 };
+
+const styles = StyleSheet.create({
+  imageStyle: {
+    height: 320,
+    backgroundColor: "black",
+  },
+  lengthView: {
+    alignItems: "flex-end",
+    padding: 10,
+  },
+  lengthText: {
+    color: "pink",
+    fontSize: 12,
+    borderWidth: 1,
+    borderColor: "pink",
+    paddingBottom: 2,
+    paddingTop: 2,
+    paddingLeft: 5,
+    paddingRight: 5,
+    borderRadius: 8,
+  },
+});
 
 export default FeedCardImageList;

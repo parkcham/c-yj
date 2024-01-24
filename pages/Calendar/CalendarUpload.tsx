@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Platform, Text } from "react-native";
+import { View, StyleSheet, Platform } from "react-native";
+import { StackScreenProps } from "@react-navigation/stack";
 
+import { RootStackParamList } from "../../navigation/types";
 import useDateTimePicker from "../../hooks/useDateTimePicker";
+import useHeader from "../../hooks/useHeader";
 import DateTimeModal from "../../components/Common/DateTimeModal";
 import Input from "../../components/Common/Input";
 import InputDone from "../../components/Common/InputDone";
-import DayCounter from "../../components/DDay/DayCounter";
-import useHeader from "../../hooks/useHeader";
 import { createContent, createdAt } from "../../apis/api/commonFirebase";
-import { conditional, day } from "../../apis/utils/dayCounter";
-import { RootStackParamList } from "../../navigation/types";
-import { StackScreenProps } from "@react-navigation/stack";
 
-type MovieScreenProps = StackScreenProps<RootStackParamList, "CalendarUpload">;
+type CalendarUploadProps = StackScreenProps<RootStackParamList, "CalendarUpload">;
 
-const CalendarUpload = ({ route }: MovieScreenProps) => {
+const CalendarUpload = ({ route }: CalendarUploadProps) => {
   const [detail, setDetail] = useState("");
   const { selectedDate } = route.params;
   const {

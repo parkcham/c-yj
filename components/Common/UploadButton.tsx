@@ -21,6 +21,16 @@ const UploadButton = (props: IProps) => {
 
   const { open } = visible;
 
+  const ddayUpload = () => {
+    navigation.navigate("DDayUpload");
+  };
+  const feedUpload = () => {
+    navigation.navigate("FeedUpload");
+  };
+  const diaryUpload = () => {
+    navigation.navigate("DiaryUpload");
+  };
+
   return (
     <FAB.Group
       open={open}
@@ -35,25 +45,26 @@ const UploadButton = (props: IProps) => {
           icon: "calendar-today",
           color: "pink",
           label: "디데이",
-          onPress: () => navigation.navigate("DDayUpload"),
+          onPress: ddayUpload,
         },
         {
           icon: "instagram",
           color: "pink",
           label: "피드",
-          onPress: () => navigation.navigate("FeedUpload"),
+          onPress: feedUpload,
         },
         {
           icon: "notebook-outline",
           color: "pink",
           label: "다이어리",
-          onPress: () => navigation.navigate("DiaryUpload"),
+          onPress: diaryUpload,
         },
       ]}
       onStateChange={onStateChange}
     />
   );
 };
+
 const styles = StyleSheet.create({
   fab: {
     backgroundColor: "pink",

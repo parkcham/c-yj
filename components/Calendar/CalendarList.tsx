@@ -1,28 +1,11 @@
-import React, { useRef, useState, useMemo } from "react";
+import React from "react";
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
   FlatList,
-  ListRenderItem,
-  SectionList,
   NativeSyntheticEvent,
   NativeScrollEvent,
-  SectionListData,
 } from "react-native";
-import Calendar from "../../components/Calendar/Calendar";
-import FabButton from "../../components/Common/FabButton";
-import useCalendar from "../../hooks/useCalendar";
-import { format } from "date-fns";
-import CalendarCard from "../../components/Calendar/CalendarCard";
-import { ko } from "date-fns/locale";
-import Input from "../../components/Common/Input";
-import { useNavigation } from "@react-navigation/native";
-import { ScreenNavigationProp } from "../../navigation/types";
-import { Modalize } from "react-native-modalize";
-import useDateTimePicker from "../../hooks/useDateTimePicker";
-import RenderSectionHeader from "./SectionHeader";
+
+import CalendarCard from "./CalendarCard/CalendarCard";
 import ListEmptyView from "./ListEmptyView";
 import SectionHeader from "./SectionHeader";
 
@@ -32,6 +15,7 @@ interface IProps {
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
+
   onScroll?: (
     event: NativeSyntheticEvent<NativeScrollEvent>
   ) => void | undefined;

@@ -34,7 +34,6 @@ const FeedImageList = (props: IProps) => {
         <Text style={styles.imagesLength}>{props.images.length}</Text>
         <Text style={styles.imagesMaxLength}>/5</Text>
       </View>
-
     </TouchableOpacity>
   );
 
@@ -61,28 +60,21 @@ const FeedImageList = (props: IProps) => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
-    // height: 130,
-    borderBottomWidth:8,
-    borderColor:"#F5F5F5",
-
-    // borderTopWidth:1.2,
-    // borderBottomWidth: 1.2,
-    // borderColor: "#F2F2F2",
-    paddingTop:20,
-    paddingBottom:20
+    borderBottomWidth: 8,
+    borderColor: "#F5F5F5",
+    paddingTop: 20,
+    paddingBottom: 20,
   },
   header: {
     height: 88,
     marginLeft: 10,
     borderRadius: 8,
     backgroundColor: "#F5F5F5",
-    // borderWidth:1.2,
-    // borderColor:"#E6E6E6",
     alignItems: "center",
     justifyContent: "center",
-    
   },
   textView: {
     flexDirection: "row",

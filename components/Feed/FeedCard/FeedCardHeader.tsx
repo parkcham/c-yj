@@ -1,21 +1,33 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+
 import EllipsisButton from "../../Common/EllipsisButton";
+import EllipsisModal from "../../Common/EllipsisModal";
+import useEllipsisModal from "../../../hooks/useEllipsisModal";
 
 const FeedCardHeader = () => {
+  const { modalRef, onOpen, onClose } = useEllipsisModal();
+
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: 7,
-      }}
-    >
-      <Text style={{ fontSize: 16, color: "#545454" }}>C·YJ</Text>
-      <EllipsisButton />
+    <View style={styles.container}>
+      <Text style={styles.text}>C·YJ</Text>
+      <EllipsisButton onPress={onOpen} />
+      <EllipsisModal ref={modalRef} onPressClose={onClose} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 7,
+  },
+  text: {
+    fontSize: 16,
+    color: "#545454",
+  },
+});
 
 export default FeedCardHeader;

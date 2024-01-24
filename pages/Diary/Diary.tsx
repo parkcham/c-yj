@@ -1,5 +1,7 @@
 import React from "react";
-import { View, FlatList, Text, TouchableOpacity, ImageBackground } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
+
+import DiaryCard from "../../components/Diary/DiaryCard";
 
 const Diary = () => {
   const data = [
@@ -20,32 +22,15 @@ const Diary = () => {
     },
   ];
   const renderItem = ({ item }: any) => (
-    <TouchableOpacity
-      style={{
-        borderBottomWidth: 1.2,
-        borderColor: "#F2F2F2",
-        marginBottom: 5,
-        marginTop: 5,
-      }}
-    >
-      <Text style={{ color: "#545454", fontSize: 20 }}>{item.title}</Text>
-      <Text
-        numberOfLines={2}
-        style={{ color: "#808080", fontSize: 18, marginTop: 5 }}
-      >
-        {item.detail}
-      </Text>
-      <Text style={{ color: "#8A8A8A", marginBottom: 7, marginTop: 5 }}>
-        {item.createdDate}
-      </Text>
-    </TouchableOpacity>
+    <DiaryCard
+      title={item.title}
+      detail={item.detail}
+      createdDate={item.createdDate}
+    />
   );
 
-  const ItemSeparatorComponent = () => (
-    <View style={{ height: 1.2, backgroundColor: "#F2F2F2" }}></View>
-  );
   return (
-    <View style={{ flex: 1, backgroundColor: "white",paddingLeft:10,paddingRight:10 }}>
+    <View style={styles.container}>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -54,5 +39,14 @@ const Diary = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+});
 
 export default Diary;

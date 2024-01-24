@@ -3,19 +3,16 @@ import {
   View,
   Text,
   TouchableOpacity,
-  SafeAreaView,
-  FlatList,
-  ListRenderItem,
-  SectionList,
   Animated,
   OpaqueColorValue,
+  StyleSheet,
 } from "react-native";
-import { ko } from "date-fns/locale";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { ScreenNavigationProp ,RootStackParamList} from "../../navigation/types";
-
 import { format } from "date-fns";
+
+import { ScreenNavigationProp } from "../../navigation/types";
+
 interface IProps {
   month: string;
   selectedDate: string;
@@ -30,38 +27,50 @@ interface IProps {
 const CalendarHeader = (props: IProps) => {
   const navigation = useNavigation<ScreenNavigationProp>();
 
+  const calendarUpload = () => {
+    navigation.navigate("CalendarUpload", {
+      selectedDate: props.selectedDate,
+    });
+  };
+  
   return (
-    <View
-      style={{
-        alignItems: "center",
-        padding: 10,
-        flexDirection: "row",
-        paddingLeft: 20,
-        paddingRight: 20,
-        justifyContent: "space-between",
-      }}
-    >
-      <View style={{ flexDirection: "row", alignItems: "baseline" }}>
-        <Text style={{ fontSize: 22, color: "#545454" }}>
+    <View style={styles.container}>
+      <View style={styles.textView}>
+        <Text style={styles.month}>
           {format(new Date(props.month), "yyyy년 M월")}
         </Text>
-        {/* <View style={{ flexDirection: "row", alignItems: "baseline" }}> */}
-        <Animated.Text style={{ fontSize: 22, color: props.color }}>
+        <Animated.Text style={[styles.day, { color: props.color }]}>
           {format(new Date(props.selectedDate), " d일")}
         </Animated.Text>
       </View>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("CalendarUpload", {
-            selectedDate: props.selectedDate,
-          })
-        }
-      >
+
+      <TouchableOpacity onPress={calendarUpload}>
         <AntDesign name="plus" size={24} color="#545454" />
       </TouchableOpacity>
-      {/* </View> */}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    padding: 10,
+    flexDirection: "row",
+    paddingLeft: 20,
+    paddingRight: 20,
+    justifyContent: "space-between",
+  },
+  textView: {
+    flexDirection: "row",
+    alignItems: "baseline",
+  },
+  month: {
+    fontSize: 22,
+    color: "#545454",
+  },
+  day: {
+    fontSize: 22,
+  },
+});
 
 export default CalendarHeader;
