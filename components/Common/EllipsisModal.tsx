@@ -20,22 +20,24 @@ const EllipsisModal = forwardRef<Ref, IProps>((props, ref) => {
       scrollViewProps={{ bounces: false }}
       withReactModal={true}
       handlePosition="inside"
-      modalHeight={220}
+      modalHeight={200}
       ref={ref}
     >
+   
+
       <TouchableOpacity style={styles.modify}>
         <FontAwesome size={20} color="#ABABAB" name="edit" />
         <Text style={styles.modifyText}>수정</Text>
       </TouchableOpacity>
-
+      
       <TouchableOpacity style={styles.delete}>
         <Ionicons size={20} color="#FF1B00" name="trash-outline" />
         <Text style={styles.deleteText}>삭제</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={props.onPressClose} style={styles.close}>
+      {/* <TouchableOpacity onPress={props.onPressClose} style={styles.close}>
         <Text style={styles.closeText}>닫기</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
     </Modalize>
   );
@@ -51,10 +53,7 @@ const styles = StyleSheet.create({
   modify: {
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "#F5F5F5",
     padding: 12,
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
   },
   modifyText: {
     fontSize: 18,
@@ -64,27 +63,16 @@ const styles = StyleSheet.create({
   delete: {
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "#F5F5F5",
     padding: 12,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+   
   },
   deleteText: {
     fontSize: 18,
     color: "#FF1B00",
     paddingLeft: 5,
   },
-  close: {
-    backgroundColor: "#F5F5F5",
-    padding: 12,
-    marginTop: 20,
-    alignItems: "center",
-    borderRadius: 10,
-  },
-  closeText: {
-    fontSize: 18,
-    color: "#545454",
-  },
+
+
 });
 
 export default EllipsisModal;

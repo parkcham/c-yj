@@ -43,6 +43,7 @@ const FeedCardImageList = (props: IProps) => {
   return (
     <FlatList
       horizontal={true}
+      pagingEnabled
       data={props.images}
       renderItem={renderItem}
       keyExtractor={(item: any) => item}

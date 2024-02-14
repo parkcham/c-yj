@@ -11,22 +11,28 @@ import {
   createdAt,
   imageGetUrl,
 } from "../../apis/api/commonFirebase";
-
+import SendButton from "../../components/Common/SendButton";
 const FeedUpload = () => {
   const [detail, setDetail] = useState("");
   const { images, imagePickerLimit, removeImage } = useImagePicker();
   const imageUrl = imageGetUrl(images);
 
   useHeader({
-    disabled: detail.length + images.length,
-    onPress: async () =>
-      createContent({
-        collection: "Feeds",
-        detail: detail,
-        createdAt: createdAt,
-        imageUrl: (await imageUrl).imageResult,
-        imageName: (await imageUrl).imageName,
-      }),
+    deps: [images, detail],
+    headerRight: (
+      <SendButton
+        disabled={detail.length}
+        onPress={async () =>
+          createContent({
+            collection: "Feeds",
+            detail: detail,
+            createdAt: createdAt,
+            imageUrl: (await imageUrl).imageResult,
+            imageName: (await imageUrl).imageName,
+          })
+        }
+      />
+    ),
   });
 
   return (
@@ -58,9 +64,9 @@ const styles = StyleSheet.create({
   input: {
     height: 220,
     padding: 10,
-    borderTopWidth:1.2,
-    borderBottomWidth:1.2,
-    borderColor:"#F2F2F2"
+    borderTopWidth: 1.2,
+    borderBottomWidth: 1.2,
+    borderColor: "#F2F2F2",
   },
 });
 

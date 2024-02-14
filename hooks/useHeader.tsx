@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import {
-  TouchableOpacity,
-  StyleSheet,
-  GestureResponderEvent,
-} from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { StyleSheet } from "react-native";
 
 interface IProps {
-  disabled: number;
   headerTitle?: string;
-  onPress: (event: GestureResponderEvent) => void;
+  headerRight: React.JSX.Element;
   deps?: any;
 }
 
@@ -20,27 +14,9 @@ const useHeader = (props: IProps) => {
   useEffect(() => {
     navigation.setOptions({
       title: props.headerTitle,
-      headerRight: () => (
-        <TouchableOpacity
-          style={styles.right}
-          disabled={props.disabled > 0 ? false : true}
-          onPress={props.onPress}
-        >
-          <Feather
-            name="send"
-            size={22}
-            style={{ transform: [{ rotate: "20deg" }] }}
-            color={props.disabled > 0 ? "#8A8A8A" : "#E6E6E6"}
-          />
-        </TouchableOpacity>
-      ),
+      headerRight: () => props.headerRight,
     });
-  }, [navigation, props.disabled, props.deps]);
+  }, [navigation, props.deps]);
 };
-const styles = StyleSheet.create({
-  right: {
-    paddingRight: 14,
-  },
-});
 
 export default useHeader;

@@ -3,8 +3,8 @@ import { FlatList, View, StyleSheet } from "react-native";
 
 import FeedCard from "../../components/Feed/FeedCard/FeedCard";
 import FeedCardSeparator from "../../components/Feed/FeedCard/FeedCardSeparator";
-
-const Feed = () => {
+import FabButton from "../../components/Common/FabButton";
+const FeedScreen = () => {
   const data = [
     {
       id: 929,
@@ -29,7 +29,7 @@ const Feed = () => {
   const renderItem = ({ item }: any) => (
     <FeedCard id={item.id} detail={item.detail} images={item.images} />
   );
-  
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -38,7 +38,9 @@ const Feed = () => {
         keyExtractor={(item: any) => item.id}
         ItemSeparatorComponent={FeedCardSeparator}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom:100}}
       />
+      {/* <FabButton icon="card-plus-outline" /> */}
     </View>
   );
 };
@@ -50,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Feed;
+export default FeedScreen;

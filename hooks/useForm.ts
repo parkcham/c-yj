@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
 
+
+// interface IProps {
+//   oldTitle? : string 
+//   oldDetail? : string
+// }
+
+
 export default function useForm() {
   const [inputs, setInputs] = useState({
-    title: "",
-    detail: "",
+    title:  "",
+    detail:  ""
   });
   const { title, detail } = inputs;
 

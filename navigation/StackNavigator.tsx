@@ -6,11 +6,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import BottomNavigator from "./BottomNavigator";
-import DDayUpload from "../pages/DDay/DDayUpload";
 import FeedUpload from "../pages/Feed/FeedUpload";
-import DiaryUpload from "../pages/Diary/DiaryUpload";
 import CalendarUpload from "../pages/Calendar/CalendarUpload";
 import { RootStackParamList } from "./types";
+
 const Stack = createStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => {
@@ -38,25 +37,18 @@ const StackNavigator = () => {
               style={{ padding: 5 }}
               name="arrow-back"
               size={26}
-              color="#8A8A8A"
+              color="#4D4D4D"
             />
           ),
           headerBackTitleVisible: false,
           presentation: "modal",
           cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-          headerTintColor: "#8A8A8A",
+          headerTintColor: "#4D4D4D",
           headerTitleStyle: {
             fontSize: 18,
           },
         }}
       >
-        <Stack.Screen
-          options={{
-            headerTitle: "새 디데이",
-          }}
-          name="DDayUpload"
-          component={DDayUpload}
-        />
         <Stack.Screen
           options={{
             headerTitle: "새 피드",
@@ -64,35 +56,6 @@ const StackNavigator = () => {
           name="FeedUpload"
           component={FeedUpload}
         />
-        <Stack.Screen
-          options={{
-            headerTitle: "새 다이어리",
-          }}
-          name="DiaryUpload"
-          component={DiaryUpload}
-        />
-      </Stack.Group>
-      <Stack.Group
-        screenOptions={{
-          headerShadowVisible: false,
-          // gestureEnabled:false,
-
-          headerBackImage: () => (
-            <Ionicons
-              style={{ padding: 5 }}
-              name="arrow-back"
-              size={26}
-              color="#8A8A8A"
-            />
-          ),
-          headerBackTitleVisible: false,
-          presentation: "modal",
-          headerTintColor: "#8A8A8A",
-          headerTitleStyle: {
-            fontSize: 18,
-          },
-        }}
-      >
         <Stack.Screen name="CalendarUpload" component={CalendarUpload} />
       </Stack.Group>
     </Stack.Navigator>

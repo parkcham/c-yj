@@ -36,20 +36,36 @@ export default function useCalendar(props: IProps) {
       marked: markedDates[selectedDate]?.marked,
     },
   };
+  const [month, setMonth] = useState(format(new Date(), "yyyy-MM-dd"));
 
   const onDayPress = (day: any) => {
     setSelectedDate(day.dateString);
+    setMonth(day.dateString)
   };
   const filteredData = props.data.filter(
     (data: { date: string | number | Date }) =>
       format(new Date(data.date), "yyyy-MM-dd") === selectedDate
   );
 
-  const [month, setMonth] = useState(format(new Date(), "yyyy-MM-dd"));
+
+  //함수 분리
   const onDayMonth = (months: any) => {
     setMonth(months.dateString);
-  };
+    console.log(format(new Date(), "yyyy-MM-dd"))
+    
+    if(months.dateString===format(new Date(), "yyyy-MM-dd")){
+      setSelectedDate(months.dateString)
+    }else{
+      setSelectedDate(format(new Date(months.dateString), "yyyy-MM-01"))
 
+    }
+  };
+  ///
+  
+  const todayMove = () => {
+    setSelectedDate(format(new Date(), "yyyy-MM-dd"))
+    setMonth(format(new Date(), "yyyy-MM-dd"))
+  }
   return {
     month,
     selectedDate,
@@ -57,5 +73,6 @@ export default function useCalendar(props: IProps) {
     markedSelectedDate,
     onDayMonth,
     onDayPress,
+    todayMove
   };
 }
