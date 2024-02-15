@@ -1,8 +1,7 @@
-import React, { createRef, useRef, useState,RefObject } from "react";
-import { Button, StyleSheet, View, useWindowDimensions ,Text} from "react-native";
-import { CalendarList, LocaleConfig, } from "react-native-calendars";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { CalendarList, LocaleConfig } from "react-native-calendars";
 import { MarkedDates, DateData } from "react-native-calendars/src/types";
-import { format } from "date-fns";
 
 LocaleConfig.locales["fr"] = {
   monthNames: [
@@ -49,23 +48,12 @@ LocaleConfig.defaultLocale = "fr";
 interface IProps {
   markedDates?: MarkedDates | undefined;
   onDayPress?: (date: DateData) => void;
-  onMonthChange? : (date: DateData) => void
+  onMonthChange?: (date: DateData) => void;
 }
 
 const Calendar = (props: IProps) => {
- const renderHeader = () =>{
-
- }
   return (
     <CalendarList
-    // dayComponent={({date, state}) => {
-    //   return (
-    //     <View>
-    //       <Text style={{textAlign: 'center', color: state === 'disabled' ? 'gray' : 'black'}}>{date.day}</Text>
-    //       <Text>zz</Text>
-    //     </View>
-    //   );
-    // }}
       style={styles.calendar}
       horizontal={true}
       pagingEnabled={true}
@@ -74,7 +62,7 @@ const Calendar = (props: IProps) => {
       futureScrollRange={12}
       monthFormat="yyyy년 M월"
       hideArrows={true}
-      hideExtraDays ={false}
+      hideExtraDays={false}
       staticHeader={true}
       disableMonthChange={true}
       // hideExtraDays={false}
@@ -101,7 +89,7 @@ const Calendar = (props: IProps) => {
         textMonthFontSize: 20,
         todayTextColor: "#5CD1E5",
         textDayFontWeight: "bold",
-        selectedDotColor:"red",
+        selectedDotColor: "red",
         // textMonthFontWeight: "bold",
         textDayStyle: {
           color: "#8A8A8A",
