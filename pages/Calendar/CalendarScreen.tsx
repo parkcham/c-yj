@@ -18,7 +18,6 @@ import CalendarList from "../../components/Calendar/CalendarList";
 import CalendarHeader from "../../components/Calendar/CalendarHeader";
 import CalendarStickyHeader from "../../components/Calendar/CalendarStickyHeader";
 import Handle from "../../components/Common/Handle";
-
 import useCalendar from "../../hooks/useCalendar";
 import useBottomSheet from "../../hooks/useBottomSheet";
 
@@ -266,7 +265,6 @@ const CalendarScreen = () => {
           </AScrollView>
         </Animated.View>
       </GestureDetector>
-      
     </SafeAreaView>
   );
 };
@@ -287,6 +285,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     paddingLeft: 22,
+    paddingRight:10
   },
 });
 

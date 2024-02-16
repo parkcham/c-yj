@@ -5,10 +5,11 @@ import {
 } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 
+import { RootStackParamList } from "./types";
 import BottomNavigator from "./BottomNavigator";
 import FeedUpload from "../pages/Feed/FeedUpload";
+import FeedModify from "../pages/Feed/FeedModify";
 import CalendarUpload from "../pages/Calendar/CalendarUpload";
-import { RootStackParamList } from "./types";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -56,7 +57,16 @@ const StackNavigator = () => {
           name="FeedUpload"
           component={FeedUpload}
         />
-        <Stack.Screen name="CalendarUpload" component={CalendarUpload} />
+        <Stack.Screen
+          options={{
+            headerTitle: "피드 수정",
+          }}
+          name="FeedModify"
+          component={FeedModify}
+        />
+        <Stack.Screen options={{
+          headerTitle:"일정 추가"
+        }}name="CalendarUpload" component={CalendarUpload} />
       </Stack.Group>
     </Stack.Navigator>
   );

@@ -12,6 +12,7 @@ import {
   imageGetUrl,
 } from "../../apis/api/commonFirebase";
 import SendButton from "../../components/Common/SendButton";
+
 const FeedUpload = () => {
   const [detail, setDetail] = useState("");
   const { images, imagePickerLimit, removeImage } = useImagePicker();

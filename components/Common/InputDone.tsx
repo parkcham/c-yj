@@ -19,6 +19,7 @@ const InputDone = () => {
     </InputAccessoryView>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",

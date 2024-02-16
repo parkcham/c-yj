@@ -3,7 +3,7 @@ import { FlatList, View, StyleSheet } from "react-native";
 
 import FeedCard from "../../components/Feed/FeedCard/FeedCard";
 import FeedCardSeparator from "../../components/Feed/FeedCard/FeedCardSeparator";
-import FabButton from "../../components/Common/FabButton";
+
 const FeedScreen = () => {
   const data = [
     {
@@ -40,7 +40,6 @@ const FeedScreen = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom:100}}
       />
-      {/* <FabButton icon="card-plus-outline" /> */}
     </View>
   );
 };

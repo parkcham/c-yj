@@ -4,6 +4,7 @@ import { todayMidnight, timeFormat } from "../apis/utils/dayCounter";
 export default function useDateTimePicker() {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [selectedDateTime, setSelectedDateTime] = useState(new Date());
+  const [display, setDisplay] = useState("date" as "date" | "time");
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -15,15 +16,27 @@ export default function useDateTimePicker() {
 
   const handleConfirm = (date: Date) => {
     hideDatePicker();
-    // setSelectedDate(timeFormat(date, "00:00:00"));
     setSelectedDateTime(date);
 
+  };
+
+  const datePicker = () => {
+    showDatePicker();
+    setDisplay("date");
+  };
+  
+  const timePicker = () => {
+    showDatePicker();
+    setDisplay("time");
   };
 
   return {
     isDatePickerVisible,
     selectedDateTime,
     showDatePicker,
+    display,
+    datePicker,
+    timePicker,
     hideDatePicker,
     handleConfirm,
   };

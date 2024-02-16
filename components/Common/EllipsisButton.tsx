@@ -9,7 +9,7 @@ interface IProps {
 const EllipsisButton = (props: IProps) => {
   return (
     <TouchableOpacity onPress={props.onPress}>
-      <Ionicons name="ellipsis-horizontal" size={24} color="#545454" />
+      <Ionicons name="ellipsis-horizontal" size={24} color="#4D4D4D" />
     </TouchableOpacity>
   );
 };

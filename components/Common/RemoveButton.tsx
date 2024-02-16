@@ -8,7 +8,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 interface IProps {
   size?: number;
-  onPress: (event: GestureResponderEvent) => void;
+  onPress?: (event: GestureResponderEvent) => void;
 }
 
 const RemoveButton = (props: IProps) => {

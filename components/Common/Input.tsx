@@ -38,7 +38,7 @@ Input.defaultProps = {
 };
 const styles = StyleSheet.create({
   input: {
-    color: "#545454",
+    color: "#4D4D4D",
     fontSize: 20,
     textAlignVertical: "top",
     

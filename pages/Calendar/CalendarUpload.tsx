@@ -3,77 +3,72 @@ import {
   View,
   StyleSheet,
   Platform,
-  TouchableOpacity,
-  Text,
 } from "react-native";
-import { StackScreenProps } from "@react-navigation/stack";
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
 
-import { RootStackParamList } from "../../navigation/types";
 import useDateTimePicker from "../../hooks/useDateTimePicker";
 import useHeader from "../../hooks/useHeader";
 import DateTimeModal from "../../components/Common/DateTimeModal";
 import Input from "../../components/Common/Input";
 import InputDone from "../../components/Common/InputDone";
+import SendButton from "../../components/Common/SendButton";
+import CalendarDateInput from "../../components/Calendar/CalendarUpload.tsx/CalendarDateInput";
 import { createContent, createdAt } from "../../apis/api/commonFirebase";
-import { format } from "date-fns";
-import { ko } from "date-fns/locale";
 
-type CalendarUploadProps = StackScreenProps<
-  RootStackParamList,
-  "CalendarUpload"
->;
-
-const CalendarUpload = ({ route }: CalendarUploadProps) => {
+const CalendarUpload = () => {
   const [detail, setDetail] = useState("");
-  // const { selectedDate } = route.params;
+
   const {
     isDatePickerVisible,
     selectedDateTime,
+    display,
     showDatePicker,
+    datePicker,
+    timePicker,
     handleConfirm,
     hideDatePicker,
   } = useDateTimePicker();
 
-  // useHeader({
-  //   // headerTitle:selectedDate,
-  //   // disabled: detail.length,
-  //   deps:selectedDateTime,
-  //   onPress: () =>
-  //     createContent({
-  //       collection: "Calendars",
-  //       detail: detail,
-  //       createdAt: createdAt,
-  //       selectedTime : selectedDateTime
-  //     }),
-  // });
+  const timeStr =
+    String(selectedDateTime.getHours()).padStart(2, "0") +
+    String(selectedDateTime.getMinutes()).padStart(2, "0");
+
+  useHeader({
+    deps: [detail],
+    headerRight: (
+      <SendButton
+        disabled={detail.length}
+        onPress={async () =>
+          createContent({
+            collection: "Calendar",
+            detail: detail,
+            createdAt: createdAt,
+            date: format(new Date(selectedDateTime), "yyyy-M-d"),
+            time: format(new Date(selectedDateTime), " a h:mm", { locale: ko }),
+            timeStr: timeStr,
+          })
+        }
+      />
+    ),
+  });
 
   return (
     <>
       <View style={styles.container}>
         <Input style={styles.input} value={detail} onChangeText={setDetail} />
-        <TouchableOpacity
-        onPress={showDatePicker}
-          style={{
-            borderBottomWidth: 1.2,
-            borderTopWidth: 1.2,
-            borderColor: "#F2F2F2",
-            paddingTop: 20,
-            paddingBottom: 20,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text style={{ color: "#8A8A8A", fontSize: 18 }}>시간</Text>
-          <Text style={{ color: "#8A8A8A", fontSize: 18 }}>
-            {format(new Date(selectedDateTime), "a h:mm", { locale: ko })}
-          </Text>
-        </TouchableOpacity>
-        
+
+        <CalendarDateInput
+          selectedDateTime={selectedDateTime}
+          datePicker={datePicker}
+          timePicker={timePicker}
+        />
+
         <DateTimeModal
           isDatePickerVisible={isDatePickerVisible}
           selectedDate={selectedDateTime}
-          mode="time"
+          mode={display}
+          // display="inline"
           onCancel={hideDatePicker}
           onConfirm={handleConfirm}
           showPicker={showDatePicker}
