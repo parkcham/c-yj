@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Platform,
-} from "react-native";
+import { View, StyleSheet, Platform } from "react-native";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 
@@ -14,7 +10,8 @@ import Input from "../../components/Common/Input";
 import InputDone from "../../components/Common/InputDone";
 import SendButton from "../../components/Common/SendButton";
 import CalendarDateInput from "../../components/Calendar/CalendarUpload.tsx/CalendarDateInput";
-import { createContent, createdAt } from "../../apis/api/commonFirebase";
+import { createdAt } from "../../apis/api/commonFirebase";
+import useAddMutation from "../../hooks/query/useAddMutation";
 
 const CalendarUpload = () => {
   const [detail, setDetail] = useState("");
@@ -30,27 +27,27 @@ const CalendarUpload = () => {
     hideDatePicker,
   } = useDateTimePicker();
 
+  const { addContent } = useAddMutation({ queryKey: "Calendar" });
+
   const timeStr =
     String(selectedDateTime.getHours()).padStart(2, "0") +
     String(selectedDateTime.getMinutes()).padStart(2, "0");
 
+  const addCalendar = () => {
+    addContent({
+      collection: "Calendar",
+      detail: detail,
+      // id:randomSt(),
+      createdAt: createdAt,
+      date: format(new Date(selectedDateTime), "yyyy-M-d"),
+      time: format(new Date(selectedDateTime), "a h:mm", { locale: ko }),
+      timeStr: timeStr,
+    });
+  };
+  
   useHeader({
     deps: [detail],
-    headerRight: (
-      <SendButton
-        disabled={detail.length}
-        onPress={async () =>
-          createContent({
-            collection: "Calendar",
-            detail: detail,
-            createdAt: createdAt,
-            date: format(new Date(selectedDateTime), "yyyy-M-d"),
-            time: format(new Date(selectedDateTime), " a h:mm", { locale: ko }),
-            timeStr: timeStr,
-          })
-        }
-      />
-    ),
+    headerRight: <SendButton disabled={detail.length} onPress={addCalendar} />,
   });
 
   return (

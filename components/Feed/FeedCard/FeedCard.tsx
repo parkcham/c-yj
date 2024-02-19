@@ -9,6 +9,7 @@ import FeedCardDetail from "./FeedCardDetail";
 import BottomSheet from "../../Common/BottomSheet";
 import EllipsisButton from "../../Common/EllipsisButton";
 import useEllipsisModal from "../../../hooks/useEllipsisModal";
+import useDelMutation from "../../../hooks/query/useDelMutation";
 
 interface IProps {
   id: string;
@@ -18,23 +19,37 @@ interface IProps {
 
 const FeedCard = (props: IProps) => {
   const { modalRef, onOpen, onClose } = useEllipsisModal();
+
   const navigation = useNavigation<ScreenNavigationProp>();
 
+  const {delContent} = useDelMutation({queryKey:"Feeds",id:props.id})
+  
   const moveFeedModify = () => {
     onClose();
-    navigation.navigate("FeedModify",{oldDetail:props.detail});
+    navigation.navigate("FeedModify", { oldDetail: props.detail ,id : props.id});
   };
 
+  const delFeed = () => {
+    onClose()
+    delContent()
+  }
+  
   return (
     <>
-      <BottomSheet modalStyle={styles.modalStyle}ref={modalRef} modalHeight={200}>
-
+      <BottomSheet
+        modalStyle={styles.modalStyle}
+        ref={modalRef}
+        modalHeight={200}
+      >
         <TouchableOpacity style={styles.modify} onPress={moveFeedModify}>
           <FontAwesome size={20} color="#4D4D4D" name="edit" />
           <Text style={styles.modifyText}>수정</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.delete}>
+        <TouchableOpacity
+          style={styles.delete}
+          onPress={delFeed}
+        >
           <Ionicons size={21} color="#FF1B00" name="trash-outline" />
           <Text style={styles.deleteText}>삭제</Text>
         </TouchableOpacity>

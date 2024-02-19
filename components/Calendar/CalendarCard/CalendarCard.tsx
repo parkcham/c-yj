@@ -1,14 +1,25 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-
 import RemoveButton from "../../Common/RemoveButton";
+import useDelMutation from "../../../hooks/query/useDelMutation";
 
 interface IProps {
+  id: string;
   detail: string;
   time: string;
 }
 
 const CalendarCard = (props: IProps) => {
+  //   const del = useMutation({
+  //     mutationFn: deleteContent,
+  //     onSuccess: () => {
+  //       queryClient.setQueryData(['Calendar'],
+  //       (previous:any) => previous.filter((p: { id: string; })=>(p.id !== props.id))
+  //       )
+  // },
+  //   });
+  const { delContent } = useDelMutation({ queryKey: "Calendar", id: props.id });
+
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
@@ -16,10 +27,12 @@ const CalendarCard = (props: IProps) => {
 
         <View>
           <Text style={styles.detail}>{props.detail}</Text>
+          <Text style={styles.detail}>{props.id}</Text>
+
           <Text style={styles.time}>{props.time}</Text>
         </View>
       </View>
-      <RemoveButton />
+      <RemoveButton onPress={() => delContent()} />
     </View>
   );
 };

@@ -46,7 +46,7 @@ export default function useBottomSheet(props: IProps) {
           animated: false,
         });
       }
-      console.log(e.translationY);
+      // console.log(e.translationY);
     })
 
     .onEnd((e) => {

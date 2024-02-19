@@ -6,34 +6,31 @@ import useImagePicker from "../../hooks/useImagePicker";
 import FeedImageList from "../../components/Feed/FeedUpload/FeedImageList";
 import InputDone from "../../components/Common/InputDone";
 import Input from "../../components/Common/Input";
-import {
-  createContent,
-  createdAt,
-  imageGetUrl,
-} from "../../apis/api/commonFirebase";
+import { createdAt, imageGetUrl } from "../../apis/api/commonFirebase";
 import SendButton from "../../components/Common/SendButton";
+import useAddMutation from "../../hooks/query/useAddMutation";
 
 const FeedUpload = () => {
+  const { addContent } = useAddMutation({ queryKey: "Feeds" });
+
   const [detail, setDetail] = useState("");
   const { images, imagePickerLimit, removeImage } = useImagePicker();
-  const imageUrl = imageGetUrl(images);
+
+  const addFeed = async () => {
+    const imageUrl = imageGetUrl(images);
+
+    addContent({
+      collection: "Feeds",
+      detail: detail,
+      createdAt: createdAt,
+      imageUrl: (await imageUrl).imageResult,
+      imageName: (await imageUrl).imageName,
+    });
+  };
 
   useHeader({
     deps: [images, detail],
-    headerRight: (
-      <SendButton
-        disabled={detail.length}
-        onPress={async () =>
-          createContent({
-            collection: "Feeds",
-            detail: detail,
-            createdAt: createdAt,
-            imageUrl: (await imageUrl).imageResult,
-            imageName: (await imageUrl).imageName,
-          })
-        }
-      />
-    ),
+    headerRight: <SendButton disabled={detail.length} onPress={addFeed} />,
   });
 
   return (

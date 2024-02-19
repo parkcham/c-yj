@@ -2,6 +2,7 @@ import { firebase } from "../../config/firebase";
 
 const db = firebase.firestore();
 export const createdAt = firebase.firestore.FieldValue.serverTimestamp();
+// export const randomSt = Math.random().toString(36).substring(2, 11);
 
 // export async function getContent({ collection, limit, pageParam }: any) {
 //   let query = db
@@ -58,14 +59,24 @@ export const createdAt = firebase.firestore.FieldValue.serverTimestamp();
 //   console.log(da);
 //   return da;
 // }
+export function randomSt(){
+  return Math.random().toString(36).substring(2, 11);
+}
+ 
 
-export async function getContent({ collection,limit,pageParam }:any) {
+export async function getContent({ collection,limit,pageParam}:any) {
   let query = db.collection(collection).orderBy("createdAt", "desc").limit(limit);
+
   if(pageParam){
     console.log(pageParam)
     const cursorDoc = await db.collection(collection).doc(pageParam.id).get();
     query= query.startAfter(cursorDoc)
   }
+
+  // if (id) {
+  //   const cursorDoc = await db.collection(collection).doc(id).get();
+  //   query = query.endBefore(cursorDoc)
+  // }
 
   const snapshot = await query.get();
 
@@ -77,6 +88,12 @@ export async function getContent({ collection,limit,pageParam }:any) {
   return content;
 }
 
+export async function getNewerContent(id: string, collection: string) {
+  return getContent({
+    id,
+    collection,
+  });
+}
 // export async function getContent({ collection, mode, id,limit,pageParam }:any = {}) {
 //   let query = db.collection(collection).orderBy("createdAt", "desc").startAfter(pageParam).limit(limit);
 
@@ -96,10 +113,17 @@ export async function getContent({ collection,limit,pageParam }:any) {
 //   console.log(content)
 //   return content;
 // }
-
+export function updateContent({ collection,id,...props }:any) {
+  return db.collection(collection).doc(id).update(
+    props,
+  );
+}
 export function createContent({ collection, ...props }: any) {
   return db.collection(collection).add(props);
 }
+// export function createContent({ collection,id, ...props }: any) {
+//   return db.collection(collection).doc(id).set(props);
+// }
 export function deleteContent({ collection, id }: any) {
   return db.collection(collection).doc(id).delete();
 }

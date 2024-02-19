@@ -20,175 +20,27 @@ import CalendarStickyHeader from "../../components/Calendar/CalendarStickyHeader
 import Handle from "../../components/Common/Handle";
 import useCalendar from "../../hooks/useCalendar";
 import useBottomSheet from "../../hooks/useBottomSheet";
+import useGetQuery from "../../hooks/query/useGetQuery";
 
 const AScrollView = Animated.createAnimatedComponent(ScrollView);
 
 const CalendarScreen = () => {
-  const data = [
-    {
-      id: 929,
-      detail: "시발",
-      time: "5:40",
-      date: "2024-02-10",
-    },
+ 
+  const {data,isLoading} = useGetQuery({queryKey:"Calendar"})
 
-    {
-      id: 99,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-25",
-    },
-    {
-      id: 9229,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-25",
-    },
+  const newData = data ? Object.values(data) : [];
 
-    {
-      id: 1,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 2,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 3,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 4,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 5,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 6,
-      detail: "test",
-      time: "5:40",
-      date: "2024-03-26",
-    },
-    {
-      id: 7,
-      detail: "test",
-      time: "5:40",
-      date: "2024-03-26",
-    },
-    {
-      id: 8,
-      detail: "test",
-      time: "5:40",
-      date: "2024-03-26",
-    },
-    {
-      id: 9,
-      detail: "test",
-      time: "5:40",
-      date: "2024-04-26",
-    },
-    {
-      id: 10,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 11,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-19",
-    },
-    {
-      id: 12,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-12",
-    },
-    {
-      id: 22,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 23,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 24,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 25,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 26,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 27,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 28,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 211,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 212,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-    {
-      id: 223,
-      detail: "test",
-      time: "5:40",
-      date: "2024-02-26",
-    },
-  ];
   const open = 50;
   const closed = 360;
 
   const {
     month,
     selectedDate,
-    filteredData,
+    sortedData,
     markedSelectedDate,
     onDayMonth,
     onDayPress,
-  } = useCalendar({ data: data });
+  } = useCalendar({ data: newData });
 
   const { transY, scrollHandler, scrollViewProps, scrollRef, gesture } =
     useBottomSheet({ open: open, closed: closed });
@@ -261,7 +113,7 @@ const CalendarScreen = () => {
             animatedProps={scrollViewProps}
             contentContainerStyle={{ paddingBottom: bottom + top * 2 }}
           >
-            <CalendarList filteredData={filteredData} />
+            <CalendarList filteredData={sortedData} isLoading={isLoading} />
           </AScrollView>
         </Animated.View>
       </GestureDetector>
@@ -285,7 +137,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     paddingLeft: 22,
-    paddingRight:10
+    paddingRight: 10,
   },
 });
 
