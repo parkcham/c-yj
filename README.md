@@ -13,9 +13,9 @@
 ## ✅ Application UI
 - Home
 
-<img src="https://github.com/parkcham/c-yj/assets/108769833/3bf58e0a-2412-4bb3-a269-3fd3c15eea24" width ="50%" height ="600"/>
-<img src="https://github.com/parkcham/c-yj/assets/108769833/043c08b7-16e0-4c08-a5e0-6f61b5a6a912" width ="50%" height ="600"/>
-<img src="https://github.com/parkcham/c-yj/assets/108769833/bc917f21-3413-4db1-9a4c-b785c7f3342a" width ="33%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/3bf58e0a-2412-4bb3-a269-3fd3c15eea24" width ="30%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/043c08b7-16e0-4c08-a5e0-6f61b5a6a912" width ="30%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/bc917f21-3413-4db1-9a4c-b785c7f3342a" width ="30%" height ="600"/>
 
 - Feed
 <img src="https://github.com/parkcham/c-yj/assets/108769833/4475adb5-f406-4448-903e-06f9623fd86c" width ="33%" height ="600"/>
