@@ -12,7 +12,26 @@
 - [각 기능 별 로직](https://github.com/parkcham/c-yj/wiki/c%E2%80%90yj)
 ## ✅ Application UI
 - [UI](https://github.com/parkcham/c-yj/wiki/Application-UI)
+## Home
+<img src="https://github.com/parkcham/c-yj/assets/108769833/3bf58e0a-2412-4bb3-a269-3fd3c15eea24" width ="33%" height ="600"/>
 
+<img src="https://github.com/parkcham/c-yj/assets/108769833/043c08b7-16e0-4c08-a5e0-6f61b5a6a912" width ="33%" height ="600"/>
+
+<img src="https://github.com/parkcham/c-yj/assets/108769833/bc917f21-3413-4db1-9a4c-b785c7f3342a" width ="33%" height ="600"/>
+
+## Feed
+<img src="https://github.com/parkcham/c-yj/assets/108769833/4475adb5-f406-4448-903e-06f9623fd86c" width ="33%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/b9d24850-0be5-47e1-920b-6f95a3353755" width ="33%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/8a28d27e-ee45-479f-994f-a85bb7bf6afa" width ="33%" height ="600"/>
+
+## Calendar
+
+
+<img src="https://github.com/parkcham/c-yj/assets/108769833/b8a1c306-e63b-4787-833d-c92cb2e8eccd" width ="33%" height ="600"/>
+
+<img src="https://github.com/parkcham/c-yj/assets/108769833/ece40386-c6f3-4b37-9f5a-dc530b943f96" width ="33%" height ="600"/>
+
+<img src="https://github.com/parkcham/c-yj/assets/108769833/3a184ca2-55ea-4463-87ca-c5fdada02f96" width ="33%" height ="600"/>
 ## ✅ Application 작동 영상
 
 <div align="center" padding=10>
