@@ -1,15 +1,9 @@
 import React from "react";
+import { View, SafeAreaView, Platform, StyleSheet } from "react-native";
 import {
-  View,
-  useWindowDimensions,
-  SafeAreaView,
-  Platform,
-  StyleSheet,
-} from "react-native";
-import { GestureDetector, ScrollView } from "react-native-gesture-handler";
-import Animated, {
   useAnimatedStyle,
   interpolate,
+  useSharedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -17,21 +11,18 @@ import Calendar from "../../components/Calendar/Calendar";
 import CalendarList from "../../components/Calendar/CalendarList";
 import CalendarHeader from "../../components/Calendar/CalendarHeader";
 import CalendarStickyHeader from "../../components/Calendar/CalendarStickyHeader";
-import Handle from "../../components/Common/Handle";
+import AScrollView from "../../components/Common/AScrollView";
 import useCalendar from "../../hooks/useCalendar";
-import useBottomSheet from "../../hooks/useBottomSheet";
 import useGetQuery from "../../hooks/query/useGetQuery";
 
-const AScrollView = Animated.createAnimatedComponent(ScrollView);
 
 const CalendarScreen = () => {
- 
-  const {data,isLoading} = useGetQuery({queryKey:"Calendar"})
+  const { data, isLoading } = useGetQuery({ queryKey: "Calendar" });
 
-  const newData = data ? Object.values(data) : [];
 
   const open = 50;
   const closed = 360;
+  const transY = useSharedValue(closed);
 
   const {
     month,
@@ -40,31 +31,9 @@ const CalendarScreen = () => {
     markedSelectedDate,
     onDayMonth,
     onDayPress,
-  } = useCalendar({ data: newData });
+  } = useCalendar({ data: data });
 
-  const { transY, scrollHandler, scrollViewProps, scrollRef, gesture } =
-    useBottomSheet({ open: open, closed: closed });
-
-  const { height } = useWindowDimensions();
-
-  const { bottom, top } = useSafeAreaInsets();
-
-  const sheet = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          translateY: interpolate(
-            transY.value,
-            [0, open, closed, height],
-            // 0 50, 360 , 852
-            [open, open, closed, closed],
-            // 50 , 50 , 360 , 380
-            "clamp"
-          ),
-        },
-      ],
-    };
-  });
+  const { top } = useSafeAreaInsets();
 
   const stickyHeaderStyle = useAnimatedStyle(() => {
     return {
@@ -97,26 +66,21 @@ const CalendarScreen = () => {
           onMonthChange={onDayMonth}
         />
       </View>
-
-      <GestureDetector gesture={gesture}>
-        <Animated.View style={[sheet, styles.sheet]}>
-          <Handle />
+      <AScrollView
+        open={open}
+        closed={closed}
+        transY={transY}
+        scrollViewStyle={styles.scrollView}
+        sheetStyle={styles.sheet}
+        Header={
           <CalendarStickyHeader
             selectedDate={selectedDate}
             headerStyle={stickyHeaderStyle}
           />
-          <AScrollView
-            ref={scrollRef}
-            style={styles.scrollView}
-            scrollEventThrottle={16}
-            onScroll={scrollHandler}
-            animatedProps={scrollViewProps}
-            contentContainerStyle={{ paddingBottom: bottom + top * 2 }}
-          >
-            <CalendarList filteredData={sortedData} isLoading={isLoading} />
-          </AScrollView>
-        </Animated.View>
-      </GestureDetector>
+        }
+      >
+        <CalendarList filteredData={sortedData} isLoading={isLoading} />
+      </AScrollView>
     </SafeAreaView>
   );
 };
@@ -129,15 +93,13 @@ const styles = StyleSheet.create({
   header: {
     position: "absolute",
   },
-  sheet: {
-    backgroundColor: "white",
-    flexGrow: 1,
-    borderTopWidth: 2,
-    borderColor: "#F2F2F2",
-  },
   scrollView: {
     paddingLeft: 22,
     paddingRight: 10,
+  },
+  sheet: {
+    borderTopWidth: 2,
+    borderColor: "#F2F2F2",
   },
 });
 

@@ -6,14 +6,14 @@ import {
   StyleSheet,
   Keyboard,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const InputDone = () => {
   return (
     <InputAccessoryView nativeID="done">
       <View style={styles.container}>
         <TouchableOpacity onPress={Keyboard.dismiss}>
-          <FontAwesome name="download" size={26} color="pink" />
+          <MaterialIcons name="keyboard-hide" size={24} color="pink" />
         </TouchableOpacity>
       </View>
     </InputAccessoryView>

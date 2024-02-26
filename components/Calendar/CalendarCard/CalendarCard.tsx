@@ -10,14 +10,7 @@ interface IProps {
 }
 
 const CalendarCard = (props: IProps) => {
-  //   const del = useMutation({
-  //     mutationFn: deleteContent,
-  //     onSuccess: () => {
-  //       queryClient.setQueryData(['Calendar'],
-  //       (previous:any) => previous.filter((p: { id: string; })=>(p.id !== props.id))
-  //       )
-  // },
-  //   });
+
   const { delContent } = useDelMutation({ queryKey: "Calendar", id: props.id });
 
   return (
@@ -27,8 +20,6 @@ const CalendarCard = (props: IProps) => {
 
         <View>
           <Text style={styles.detail}>{props.detail}</Text>
-          <Text style={styles.detail}>{props.id}</Text>
-
           <Text style={styles.time}>{props.time}</Text>
         </View>
       </View>

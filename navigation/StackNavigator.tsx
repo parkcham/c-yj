@@ -10,7 +10,7 @@ import BottomNavigator from "./BottomNavigator";
 import FeedUpload from "../pages/Feed/FeedUpload";
 import FeedModify from "../pages/Feed/FeedModify";
 import CalendarUpload from "../pages/Calendar/CalendarUpload";
-
+import HomeUpload from "../pages/Home/HomeUpload";
 const Stack = createStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => {
@@ -64,9 +64,34 @@ const StackNavigator = () => {
           name="FeedModify"
           component={FeedModify}
         />
-        <Stack.Screen options={{
-          headerTitle:"일정 추가"
-        }}name="CalendarUpload" component={CalendarUpload} />
+        <Stack.Screen
+          options={{
+            headerTitle: "일정 추가",
+          }}
+          name="CalendarUpload"
+          component={CalendarUpload}
+        />
+      </Stack.Group>
+
+      <Stack.Group
+        screenOptions={{
+          headerShadowVisible: false,
+          headerBackImage: () => (
+            <Ionicons
+              style={{ padding: 5 }}
+              name="arrow-back"
+              size={26}
+              color="#4D4D4D"
+            />
+          ),
+          headerBackTitleVisible: false,
+          headerTintColor: "#4D4D4D",
+          headerTitleStyle: {
+            fontSize: 18,
+          },
+        }}
+      >
+        <Stack.Screen name="HomeUpload" component={HomeUpload} />
       </Stack.Group>
     </Stack.Navigator>
   );

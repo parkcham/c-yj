@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 
 interface IProps {
-  headerTitle?: string;
+  headerTitle?: string | number;
   headerRight: React.JSX.Element;
   deps?: any;
 }

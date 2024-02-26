@@ -10,7 +10,7 @@ import {
 interface IProps {
   value: string;
   placeholder: string;
-  multiline: boolean;
+  multiline?: boolean;
   onChangeText: (text: string) => void;
   style?: StyleProp<ViewStyle>;
 }
