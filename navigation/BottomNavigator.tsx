@@ -11,7 +11,7 @@ import {
   getFocusedRouteNameFromRoute,
 } from "@react-navigation/native";
 
-import Home from "../pages/Home/Home";
+import HomeScreen from "../pages/Home/HomeScreen";
 import FeedScreen from "../pages/Feed/FeedScreen";
 import CalendarScreen from "../pages/Calendar/CalendarScreen";
 import FabButton from "../components/Common/FabButton";
@@ -19,7 +19,7 @@ import FabButton from "../components/Common/FabButton";
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = ({ route, navigation }: any) => {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "HomeScreen";
   let icon = "card-plus-outline";
   let isFocused = useIsFocused();
   let onPress = undefined;
@@ -51,7 +51,7 @@ const BottomNavigator = ({ route, navigation }: any) => {
   return (
     <>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="HomeScreen"
         screenOptions={{
           tabBarShowLabel: false,
           headerShadowVisible: false,
@@ -67,8 +67,8 @@ const BottomNavigator = ({ route, navigation }: any) => {
               <AntDesign name="home" size={27} color={color} />
             ),
           }}
-          name="Home"
-          component={Home}
+          name="HomeScreen"
+          component={HomeScreen}
         />
 
         <Tab.Screen

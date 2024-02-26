@@ -1,11 +1,10 @@
+import React, { useCallback, useEffect } from "react";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
-import React, { useCallback, useEffect } from "react";
-import { TouchableOpacity, View, Text, Button } from "react-native";
+import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
 import { ScreenNavigationProp } from "../../navigation/types";
-import { StyleSheet } from "react-native";
-import useGetQuery from "../../hooks/query/useGetQuery";
 
 interface IProps {
   data: {
@@ -16,20 +15,16 @@ interface IProps {
     value: number;
   };
 }
+5;
+
 const HomeList = (props: IProps) => {
   const navigation = useNavigation<ScreenNavigationProp>();
-  const { data, isLoading } = useGetQuery({ queryKey: "Home" });
-  // const newData = data ? Object.values(data) : [];
 
   const dday: number[] = [];
   for (let i = 100; i < 6001; i += 100) {
     dday.push(i);
   }
-  // const ddayPush = useCallback(() => {
-  //   for (let i = 100; i < 6001; i += 100) {
-  //     dday.push(i);
-  //   }
-  // }, []);
+
   const ddayPush = () => {
     for (let i = 100; i < 6001; i += 100) {
       dday.push(i);
@@ -43,6 +38,11 @@ const HomeList = (props: IProps) => {
   //   }
   //   console.log(dday)
   // },[dday]);
+  // const ddayPush = useCallback(() => {
+  //   for (let i = 100; i < 6001; i += 100) {
+  //     dday.push(i);
+  //   }
+  // }, []);
 
   const dateFormat = (z: number) => {
     const today = new Date();

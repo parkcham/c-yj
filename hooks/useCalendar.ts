@@ -54,10 +54,9 @@ export default function useCalendar(props: IProps) {
     (a: { timeStr: string }, b: { timeStr: string }) =>
       Number(a.timeStr) - Number(b.timeStr)
   );
-  //함수 분리
+
   const onDayMonth = (months: any) => {
     setMonth(months.dateString);
-    console.log(format(new Date(), "yyyy-MM-dd"));
 
     if (months.dateString === format(new Date(), "yyyy-MM-dd")) {
       setSelectedDate(months.dateString);
@@ -65,7 +64,6 @@ export default function useCalendar(props: IProps) {
       setSelectedDate(format(new Date(months.dateString), "yyyy-MM-01"));
     }
   };
-  ///
 
   return {
     month,
