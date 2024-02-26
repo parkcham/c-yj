@@ -9,7 +9,25 @@
 <img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white"> <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=Expo&logoColor=white">
 <img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
 ## ✅ 주요 기능
-- [각 기능 별 로직](https://github.com/parkcham/c-yj/wiki/c%E2%80%90yj)
+
+### Home
+- DDay 100일 ~ 6000일 표시
+- DDay 내용 등록 및 수정 가능
+
+##
+### Calendar
+- 과거 1개월,미래 12개월 일정 등록 및 삭제 가능
+- 일정 과거 순으로 자동 정렬
+
+##
+### Feed
+- 게시물을 생성할 때 사진 최대 5개 첨부 가능
+- 게시물을 수정할 때 사진은 수정할 수 없고 글만 수정 가능
+
+- 게시물 이미지 클릭시 resizeMode:contain 
+- 게시물 내용 numberOfLines:3 제한 클릭 시 제한 해제
+
+- 
 ## ✅ Application UI
 - Home
 
@@ -18,14 +36,14 @@
 <img src="https://github.com/parkcham/c-yj/assets/108769833/bc917f21-3413-4db1-9a4c-b785c7f3342a" width ="30%" height ="600"/>
 
 - Feed
-<img src="https://github.com/parkcham/c-yj/assets/108769833/4475adb5-f406-4448-903e-06f9623fd86c" width ="33%" height ="600"/>
-<img src="https://github.com/parkcham/c-yj/assets/108769833/b9d24850-0be5-47e1-920b-6f95a3353755" width ="33%" height ="600"/>
-<img src="https://github.com/parkcham/c-yj/assets/108769833/8a28d27e-ee45-479f-994f-a85bb7bf6afa" width ="33%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/4475adb5-f406-4448-903e-06f9623fd86c" width ="30%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/b9d24850-0be5-47e1-920b-6f95a3353755" width ="30%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/8a28d27e-ee45-479f-994f-a85bb7bf6afa" width ="30%" height ="600"/>
 
 - Calendar
-<img src="https://github.com/parkcham/c-yj/assets/108769833/b8a1c306-e63b-4787-833d-c92cb2e8eccd" width ="33%" height ="600"/>
-<img src="https://github.com/parkcham/c-yj/assets/108769833/ece40386-c6f3-4b37-9f5a-dc530b943f96" width ="33%" height ="600"/>
-<img src="https://github.com/parkcham/c-yj/assets/108769833/3a184ca2-55ea-4463-87ca-c5fdada02f96" width ="33%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/b8a1c306-e63b-4787-833d-c92cb2e8eccd" width ="30%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/ece40386-c6f3-4b37-9f5a-dc530b943f96" width ="30%" height ="600"/>
+<img src="https://github.com/parkcham/c-yj/assets/108769833/3a184ca2-55ea-4463-87ca-c5fdada02f96" width ="30%" height ="600"/>
 
 ## ✅ Application 작동 영상
 
