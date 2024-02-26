@@ -10,7 +10,9 @@
 ## ✅ 주요 기능
 - [각 기능 별 로직](https://github.com/parkcham/c-yj/wiki/c%E2%80%90yj)
 ## ✅ Application UI
-- [각 기능 별 로직](https://github.com/parkcham/c-yj/wiki/Application-UI)
+- [UI](https://github.com/parkcham/c-yj/wiki/Application-UI)
+
+- 
 ## ✅ Application 작동 영상
 
 <div align="center" padding=10>
