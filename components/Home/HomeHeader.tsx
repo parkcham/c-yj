@@ -14,12 +14,13 @@ interface IProps {
 }
 const HomeHeader = (props: IProps) => {
   const { width, height } = useWindowDimensions();
-
+  const imageHeight = height * 0.5;
+  
   return (
     <View style={styles.container}>
       <ImageBackground
         source={require("../../assets/home.jpg")}
-        style={{ height: height * 0.5, width: width }}
+        style={{ height: imageHeight, width: width }}
       >
         <View style={styles.textView}>
           <Text style={styles.date}>2020.2.2(금)</Text>
