@@ -12,7 +12,6 @@
 ## ✅ Application UI
 - [UI](https://github.com/parkcham/c-yj/wiki/Application-UI)
 
-- 
 ## ✅ Application 작동 영상
 
 <div align="center" padding=10>
