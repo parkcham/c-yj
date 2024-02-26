@@ -46,7 +46,7 @@ const FeedCardImageList = (props: IProps) => {
       pagingEnabled
       data={props.images}
       renderItem={renderItem}
-      keyExtractor={(item: any) => item}
+      keyExtractor={(item: string) => item}
     />
   );
 };
