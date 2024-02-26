@@ -27,7 +27,7 @@
 - 게시물 이미지 클릭시 resizeMode:contain 
 - 게시물 내용 numberOfLines:3 제한 클릭 시 제한 해제
 
-- 
+
 ## ✅ Application UI
 - Home
 
