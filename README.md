@@ -8,7 +8,7 @@
 <img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white"> <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=Expo&logoColor=white">
 <img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
 ## ✅ 주요 기능
-- [각 기능 별 로직](https://github.com/parkcham/c-yj/wiki)
+- [각 기능 별 로직](https://github.com/parkcham/c-yj/wiki/c-yj)
 ## ✅ Application 작동 영상
 
 <div align="center" padding=10>
