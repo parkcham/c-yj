@@ -1,5 +1,10 @@
 import React from "react";
-import { SafeAreaView, useWindowDimensions, StyleSheet } from "react-native";
+import {
+  SafeAreaView,
+  useWindowDimensions,
+  StyleSheet,
+  StatusBar,
+} from "react-native";
 import {
   interpolate,
   useAnimatedStyle,
@@ -37,6 +42,7 @@ const HomeScreen = () => {
       >
         <HomeList data={data} />
       </AScrollView>
+      <StatusBar barStyle={"dark-content"} />
     </SafeAreaView>
   );
 };

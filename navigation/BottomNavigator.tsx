@@ -33,12 +33,12 @@ const BottomNavigator = ({ route, navigation }: any) => {
   };
 
   switch (routeName) {
-    case "FeedScreen":
+    case "Feed":
       icon = "card-plus-outline";
       onPress = moveFeedUpload;
       break;
 
-    case "CalendarScreen":
+    case "Calendar":
       icon = "pencil-plus-outline";
       onPress = moveCalendarUpload;
       break;
@@ -77,7 +77,7 @@ const BottomNavigator = ({ route, navigation }: any) => {
               <Ionicons name="logo-instagram" size={27} color={color} />
             ),
           }}
-          name="FeedScreen"
+          name="Feed"
           component={FeedScreen}
         />
         <Tab.Screen
@@ -87,7 +87,7 @@ const BottomNavigator = ({ route, navigation }: any) => {
               <FontAwesome name="calendar" size={23} color={color} />
             ),
           }}
-          name="CalendarScreen"
+          name="Calendar"
           component={CalendarScreen}
         />
       </Tab.Navigator>

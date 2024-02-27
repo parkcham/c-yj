@@ -23,13 +23,13 @@ const HomeHeader = (props: IProps) => {
         style={{ height: imageHeight, width: width }}
       >
         <View style={styles.textView}>
-          <Text style={styles.date}>2020.2.2(금)</Text>
+          <Text style={styles.date}>2024.2.26(월)</Text>
           <Animated.Text style={[props.headerStyle, styles.ddayTop]}>
             2일
           </Animated.Text>
         </View>
         <View style={styles.fooView}>
-          <Text style={styles.ddayFoo}>2일</Text>
+          <Text style={styles.ddayFoo}>1일</Text>
         </View>
       </ImageBackground>
     </View>

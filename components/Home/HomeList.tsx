@@ -15,39 +15,33 @@ interface IProps {
     value: number;
   };
 }
-5;
 
 const HomeList = (props: IProps) => {
   const navigation = useNavigation<ScreenNavigationProp>();
 
-  const dday: number[] = [];
-  for (let i = 100; i < 6001; i += 100) {
-    dday.push(i);
-  }
-
   const ddayPush = () => {
+    const dday: number[] = [];
     for (let i = 100; i < 6001; i += 100) {
       dday.push(i);
     }
-    console.log(dday.length);
+    return dday;
   };
-  // useEffect(() => {
 
-  //   for (let i = 100; i < 6001; i += 100) {
-  //     dday.push(i);
-  //   }
-  //   console.log(dday)
-  // },[dday]);
   // const ddayPush = useCallback(() => {
+  //   const day: number[] = []
+
   //   for (let i = 100; i < 6001; i += 100) {
   //     dday.push(i);
   //   }
-  // }, []);
+  //   return day
+  // },[])
 
-  const dateFormat = (z: number) => {
+  const dday = ddayPush();
+
+  const dateFormat = (v: number) => {
     const today = new Date();
     return format(
-      new Date(new Date(today.setDate(today.getDate() + z - 1))),
+      new Date(new Date(today.setDate(today.getDate() + v - 1))),
       "yyyy.M.d(EE)",
       { locale: ko }
     );
