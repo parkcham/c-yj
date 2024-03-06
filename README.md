@@ -6,7 +6,7 @@
 - 2023-11-01~2024-1-31
 ## ✅ 사용 기술 및 개발 환경
 
-## React Native
+### React Native
 - 핫 리로딩 기능과 하나의 코드로 IOS와 Android 앱을 모두 개발할 수 있어 선택하였습니다.
 
 <img  src ="https://img.shields.io/badge/expo-000020.svg?&style=for-the-badge&logo=expo&logoColor=white"/>
