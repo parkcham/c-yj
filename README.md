@@ -11,7 +11,7 @@
 
 
 - 앱 개발에 대한 지식이 전무한 상황이라 초기 설정이 간편하고 QR 코드로 실기기를 테스트할 수 있는 Expo를 선택하였습니다.
-  <div align=center>
+  <div align="center">
 <img  src ="https://img.shields.io/badge/expo-000020.svg?&style=for-the-badge&logo=expo&logoColor=white"/>
 <img  src ="https://img.shields.io/badge/typescript-3178C6.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
 
