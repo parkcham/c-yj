@@ -5,22 +5,24 @@
 ## ✅ 개발 기간
 - 2023-11-01~2024-1-31
 ## ✅ 사용 기술 및 개발 환경
-<img  src ="https://img.shields.io/badge/react-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/>
+
+## React Native
+- 핫 리로딩 기능과 하나의 코드로 IOS와 Android 앱을 모두 개발할 수 있어 선택하였습니다.
+
 <img  src ="https://img.shields.io/badge/expo-000020.svg?&style=for-the-badge&logo=expo&logoColor=white"/>
-<img  src ="https://img.shields.io/badge/typescript-3178C6.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
-<img  src ="https://img.shields.io/badge/firebase-FFCA28.svg?&style=for-the-badge&logo=firebase&logoColor=white"/>
-<img  src ="https://img.shields.io/badge/reactquery-FF4154.svg?&style=for-the-badge&logo=reactquery&logoColor=white"/>
-<img  src ="https://img.shields.io/badge/visualstudiocode-007ACC.svg?&style=for-the-badge&logo=visualstudiocode&logoColor=white"/>
-
-## EXPO
 - 앱 개발에 대한 지식이 전무한 상황이라 초기 설정이 간편하고 QR 코드로 실기기를 테스트할 수 있는 Expo를 선택하였습니다.
+  
+<img  src ="https://img.shields.io/badge/typescript-3178C6.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
 
-## React Query
-
-- 개발한 앱은 클라이언트 데이터보다 서버 데이터에 의존적인 서비스이며 Redux에 비해 보일러플레이트가 적어 선택하였습니다.
-## Firebase
+<img  src ="https://img.shields.io/badge/firebase-FFCA28.svg?&style=for-the-badge&logo=firebase&logoColor=white"/>
 - 백엔드 없이 앱 개발에 집중하기위해 선택하였습니다.
   
+<img  src ="https://img.shields.io/badge/reactquery-FF4154.svg?&style=for-the-badge&logo=reactquery&logoColor=white"/>
+- 개발한 앱은 클라이언트 데이터보다 서버 데이터에 의존적인 서비스이며 Redux에 비해 보일러플레이트가 적어 선택하였습니다.
+  
+<img  src ="https://img.shields.io/badge/visualstudiocode-007ACC.svg?&style=for-the-badge&logo=visualstudiocode&logoColor=white"/>
+
+
 ## ✅ Application UI
 ### HomeScreen
 - 디데이 100일 ~ 6000일 표시
