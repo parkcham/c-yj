@@ -58,6 +58,7 @@
 <img src="https://github.com/parkcham/c-yj/assets/108769833/3a184ca2-55ea-4463-87ca-c5fdada02f96" width ="30%" height ="600"/>
 
 ## 시행 착오
+- 기능 구현에만 집중하다보니 디자인과 사용자 경험 측면을 간과했던 적이 있습니다. 이후에는 사용자 중심의 디자인을 고려하여 개발에 반영하도록 노력했습니다.
 - 컴포넌트가 상태 바(status bar)를 침범하는 문제를 해결하기 위해 iOS에서는 SafeAreaView를 사용하고, 안드로이드에서는 패딩 값을 이용하였습니다.
 - header의 높이를 scroll Y 값에 따라 동적으로 조절하여 Animation Bottom Sheet를 개발했습니다. 그러나 이 방식은 iOS에서는 잘 작동하지만, 안드로이드에서는 성능 문제로 인해 버벅거리는 현상이 발생했습니다. 이후 많은 시간을 투자하여 header의 높이가 아닌 Bottom Sheet의 Y 값 변경을 통해 문제를 해결하였습니다.
 
