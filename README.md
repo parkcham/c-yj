@@ -5,7 +5,7 @@
 ## ✅ 개발 기간
 - 2023-11-01~2024-1-31
 ## ✅ 사용 기술 및 개발 환경
-https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white
+"https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"
 ## EXPO
 - 앱 개발에 대한 지식이 전무한 상황이라 초기 설정이 간편하고 QR 코드로 실기기를 테스트할 수 있는 Expo를 선택하였습니다.
 
