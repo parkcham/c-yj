@@ -3,7 +3,8 @@
 - 여자친구와 함께 사용하던 앱을 직접 만들어보는 것으로 React Native를 학습 목표로 개발하였습니다.
   
 ## ✅ 개발 기간
-- 2023-11-01~2024-1-31
+- 2023-06-01~2024-12-31
+  
 ## ✅ 사용 기술 및 개발 환경
 <div align=center> 
 <img  src ="https://img.shields.io/badge/expo-000020.svg?&style=for-the-badge&logo=expo&logoColor=white"/>
